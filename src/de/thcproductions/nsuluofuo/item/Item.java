@@ -4,12 +4,19 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
+import de.thcproductions.nsuluofuo.graphics.Assets;
 import de.thcproductions.nsuluofuo.main.Handler;
 
 public class Item {
 
 	public static Item[] items = new Item[256];
+	Item trivel = new Item(Assets.trivel, "Trivel", 0, 0, 0, 0);
+	Item money = new Item(Assets.money, "Money", 0, 0, 0, 1);
+	Item triviartefakt = new Item(Assets.triviartefakt, "Triviartefakt", 0, 0, 0, 2);
 	
+	Item sword = new Item(Assets.dsword, "Sword", 0, 0, 0, 3);
+	Item malsword = new Item(Assets.msword, "Malsword", 0, 0, 0, 4);
+	Item trivialsword = new Item(Assets.tsword, "Trivialsword", 0, 0, 0, 5);
 
 	public static final int ITEMWIDTH = 32, ITEMHEIGHT = 32;
 

@@ -80,7 +80,6 @@ public class World {
 		entityManager = new EntityManager(handler, new Player(handler, 100, 100));
 		
 		itemManager = new ItemManager(handler);
-		
 		entityManager.addEntity(new Player2(handler, 10, 2));
 		
 		/* Statics */
@@ -94,10 +93,6 @@ public class World {
 		//NPC's
 		
 		entityManager.addEntity(new NPC(handler, 6, 3, "Deine Mutter", "Ich hasse dich"));
-		
-		//Buildings
-		
-		
 		
 		loadWorld(path);
 		entityManager.getPlayer().setX(spawnX * entityManager.getPlayer().getWidth());
