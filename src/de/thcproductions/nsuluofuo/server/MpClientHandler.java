@@ -29,7 +29,7 @@ public class MpClientHandler implements Runnable{
 
 		try {
 			
-			index = anz + 1;
+			index = anz;
 			anz = anz + 1;
 
 			OutputStream out = clientsoc.getOutputStream();
@@ -37,6 +37,10 @@ public class MpClientHandler implements Runnable{
 
 			InputStream in = clientsoc.getInputStream();
 			BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+			
+			ArrayList<MpCharacter> icharacterList = new ArrayList<MpCharacter>();
+			MpCharacter thisCharacter = new MpCharacter(23, 43, 1);
+			icharacterList.add(thisCharacter);
 
 			String s = null;
 
@@ -45,29 +49,32 @@ public class MpClientHandler implements Runnable{
 				System.out.println(s);
 
 				System.out.println(s.substring(4, s.indexOf("><1:")));
+				System.out.println(s.substring(s.indexOf("><1:") + 4, s.indexOf("><2:")));
+				System.out.println(s.substring(s.indexOf("><2:") + 4, s.indexOf(">>")));
 				
-				/*characterList.add(new MpCharacter(
+				icharacterList.set(index, new MpCharacter(
 						Double.parseDouble(s.substring(4, s.indexOf("><1:"))),
 						Double.parseDouble(s.substring(s.indexOf("><1:") + 4, s.indexOf("><2:"))),
-						Integer.parseInt(s.substring(s.indexOf("><2:") + 4, s.indexOf(">>")))));*/
+						Integer.parseInt(s.substring(s.indexOf("><2:") + 4, s.indexOf(">>")))));
 				//die lines stimmen noch nicht (paas sachen noch addieren) gleiche wie in mpconnection / mayb müssen neue zeilen hin bei fehlern
 
 				
 				
 				s = null;
+				
+				String answer = "";
+				
+				for (int i = 0; i < icharacterList.size(); i++){
+					
+					answer = answer + "<<0:" + icharacterList.get(i).getPositionX() + "><1:" + icharacterList.get(i).getPositionY() + "><2:" + icharacterList.get(i).getBlickrichtung() + ">>\n";
+					
+				}
+				
+				writer.write(answer);
+				writer.flush();
 
 			}
 			
-			String answer = "";
-			
-			for (int i = 0; i < characterList.size(); i++){
-				
-				answer = answer + "<<0:" + characterList.get(i).getPositionX() + "><1:" + characterList.get(i).getPositionY() + "><2:" + characterList.get(i).getBlickrichtung() + ">>\n";
-				
-			}
-			
-			writer.write(answer);
-			writer.flush();
 
 			writer.close();
 			reader.close();
