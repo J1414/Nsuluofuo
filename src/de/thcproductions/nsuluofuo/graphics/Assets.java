@@ -13,7 +13,7 @@ public class Assets {
 	public static BufferedImage playerDown, playerUp, playerLeft, playerRight;
 	public static BufferedImage mNpcUp, mNpcDown, mNpcLeft, mNpcRight, fNpcUp, fNpcDown, fNpcLeft, fNpcRight;
 
-	public static BufferedImage money, dsword, msword, tsword;
+	public static BufferedImage trivel, money, triviartefakt, dsword, msword, tsword;
 	public static BufferedImage[] start_btn, close_button, settings_button, player_down, player_up, player_left,
 			player_right;
 	public static Font head, text, smallText;
@@ -70,11 +70,14 @@ public class Assets {
 		player_right[1] = player.split(2 * width, 2 * height, width, height);
 
 		/* Items */
-
+		
+		trivel = items.split(0, 0, width, height);
 		money = items.split(0, height, width, height);
+		triviartefakt = items.split(0, 2* height, width, height);
 		dsword = items.split(width, 0, width, height);
 		msword = items.split(width, height, width, height);
 		tsword = items.split(width, 2 * height, width, height);
+		
 
 		/* Entities */
 
