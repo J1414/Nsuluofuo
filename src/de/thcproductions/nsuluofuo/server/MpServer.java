@@ -22,6 +22,8 @@ public class MpServer {
 				Socket clientsoc = serversoc.accept();
 				new MpClientHandler(clientsoc);
 				
+				System.out.println("Server: Client verbunden");
+				
 			}
 			
 		} catch (Exception e) {

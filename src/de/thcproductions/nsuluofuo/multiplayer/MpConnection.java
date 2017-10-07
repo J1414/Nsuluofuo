@@ -45,7 +45,7 @@ public class MpConnection {
 	public void update(){
 		
 		
-		writer.write("<<0:" + localPlayer.getPositionX() + "><1:" + localPlayer.getPositionY() + "><2:" + localPlayer.getBlickrichtung() + ">>");
+		writer.write("<<0:" + localPlayer.getPositionX() + "><1:" + localPlayer.getPositionY() + "><2:" + localPlayer.getBlickrichtung() + ">>\n");
 		writer.flush();
 		
 		String answer = null;

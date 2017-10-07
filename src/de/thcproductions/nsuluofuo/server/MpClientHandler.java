@@ -21,6 +21,7 @@ public class MpClientHandler implements Runnable{
 	
 	public MpClientHandler(Socket pclientsoc) {
 		clientsoc = pclientsoc;
+		run();
 	}
 
 	@Override
@@ -30,8 +31,6 @@ public class MpClientHandler implements Runnable{
 			
 			index = anz + 1;
 			anz = anz + 1;
-			
-			characterList.add(new MpCharacter(0, 0, 0));
 
 			OutputStream out = clientsoc.getOutputStream();
 			PrintWriter writer = new PrintWriter(out);
@@ -42,27 +41,33 @@ public class MpClientHandler implements Runnable{
 			String s = null;
 
 			while ((s = reader.readLine()) != null) {
+				
+				System.out.println(s);
 
-				characterList.set(index, new MpCharacter(
+				System.out.println(s.substring(4, s.indexOf("><1:")));
+				
+				/*characterList.add(new MpCharacter(
 						Double.parseDouble(s.substring(4, s.indexOf("><1:"))),
-						Double.parseDouble(s.substring(s.indexOf("><1:"), s.indexOf("><2:"))),
-						Integer.parseInt(s.substring(s.indexOf("><3:"), s.indexOf(">>")))));
+						Double.parseDouble(s.substring(s.indexOf("><1:") + 4, s.indexOf("><2:"))),
+						Integer.parseInt(s.substring(s.indexOf("><2:") + 4, s.indexOf(">>")))));*/
 				//die lines stimmen noch nicht (paas sachen noch addieren) gleiche wie in mpconnection / mayb müssen neue zeilen hin bei fehlern
 
-				String answer = "";
 				
-				for (int i = 0; i < characterList.size(); i++){
-					
-					answer = answer + "<<0:" + characterList.get(i).getPositionX() + "><1:" + characterList.get(i).getPositionY() + "><2:" + characterList.get(i).getBlickrichtung() + ">>";
-					
-				}
 				
-				writer.write(answer);
-				writer.flush();
-
 				s = null;
 
 			}
+			
+			String answer = "";
+			
+			for (int i = 0; i < characterList.size(); i++){
+				
+				answer = answer + "<<0:" + characterList.get(i).getPositionX() + "><1:" + characterList.get(i).getPositionY() + "><2:" + characterList.get(i).getBlickrichtung() + ">>\n";
+				
+			}
+			
+			writer.write(answer);
+			writer.flush();
 
 			writer.close();
 			reader.close();
