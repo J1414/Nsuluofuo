@@ -6,7 +6,7 @@ import java.awt.image.BufferedImage;
 public class Assets {
 
 	private static final int width = 32, height = 32;
-	public static BufferedImage grass, highGrass, tree, water, bridge, largeRock, rock, path, stone, stoneBright, gate,
+	public static BufferedImage grass, highGrass, tree, ganja, water, bridge, largeRock, rock, path, stone, stoneBright, gate,
 			middleWall, mossyWall, mossyWallLeft, mossyWallRight, leftWall, rightWall, cliffDown, cliffUp, cliffLeft,
 			cliffRight, leftUpperCorner, leftBottomCorner, rightUpperCorner, rightBottomCorner;
 
@@ -15,7 +15,7 @@ public class Assets {
 	
 	public static BufferedImage heart, hheart;
 
-	public static BufferedImage trivel, money, triviartefakt, dsword, msword, tsword;
+	public static BufferedImage trivel, money, triviartefakt, dsword, msword, tsword, jibbet, monster;
 	public static BufferedImage[] start_btn, close_button, settings_button, player_down, player_up, player_left,
 			player_right;
 	public static Font head, text, smallText;
@@ -87,11 +87,14 @@ public class Assets {
 		dsword = items.split(width, 0, width, height);
 		msword = items.split(width, height, width, height);
 		tsword = items.split(width, 2 * height, width, height);
+		jibbet = items.split(2* width, 0, width, height);
+		monster = items.split(2* width, height, width, height);
 		
 
 		/* Entities */
 
-		tree = terrain.split(2 * width, 2* height, width, 2 * height);
+		tree = terrain.split(2 * width, 0, width, 2 * height);
+		ganja = terrain.split(2*width, 2*height, width, 2*height);
 		rock = terrain.split(3 * width, 0, width, height);
 		largeRock = terrain.split(3 * width, 2 * height, width, 2 * height);
 

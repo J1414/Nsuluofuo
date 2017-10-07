@@ -9,6 +9,7 @@ import de.thcproductions.nsuluofuo.entities.EntityManager;
 import de.thcproductions.nsuluofuo.graphics.tiles.Tile;
 import de.thcproductions.nsuluofuo.item.ItemManager;
 import de.thcproductions.nsuluofuo.main.Handler;
+import de.thcproductions.nsuluofuo.statics.Ganja;
 import de.thcproductions.nsuluofuo.statics.Tree;
 import de.thcproductions.nsuluofuo.utils.Utils;
 
@@ -112,10 +113,12 @@ public class World {
 	
 	private void drawTrees(){
 		entityManager.addEntity(new Tree(handler, 6, 0, width, height));
-		entityManager.addEntity(new Tree(handler, 7, 0, width, height));
+		entityManager.addEntity(new Ganja(handler, 7, 0, width, height));
 		entityManager.addEntity(new Tree(handler, 7, 1, width, height));
-		entityManager.addEntity(new Tree(handler, 8, 2, width, height));
+		entityManager.addEntity(new Ganja(handler, 8, 2, width, height));
 		entityManager.addEntity(new Tree(handler, 9, 2, width, height));
+		entityManager.addEntity(new Ganja(handler, 10,3, width, height));
+		entityManager.addEntity(new Ganja(handler, 11,3, width, height));
 
 	}
 	
