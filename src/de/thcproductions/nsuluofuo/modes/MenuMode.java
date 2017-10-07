@@ -25,7 +25,7 @@ public class MenuMode extends Mode {
 		guiManager = new GUIManager(handler);
 		handler.getMouseManager().setGUIManager(guiManager);
 		
-		guiManager.addObject(new GUIImageButton(256, 208, 128, 64, Assets.start_btn, new ClickListener(){
+		guiManager.addObject(new GUIImageButton(256, 158, 128, 64, Assets.start_btn, new ClickListener(){
 		
 	
 			@Override
@@ -35,13 +35,23 @@ public class MenuMode extends Mode {
 				
 			}}));
 		
-		guiManager.addObject(new GUIImageButton(256, 308, 128, 64, Assets.close_button, new ClickListener(){
+		guiManager.addObject(new GUIImageButton(256, 258, 128, 64, Assets.close_button, new ClickListener(){
 			
 			
 			@Override
 			public void onClick() {
 				handler.getMouseManager().setGUIManager(null);
 				System.exit(0);
+				
+			}}));
+		
+		guiManager.addObject(new GUIImageButton(256, 358, 128, 64, Assets.settings_button, new ClickListener(){
+			
+			
+			@Override
+			public void onClick() {
+				handler.getMouseManager().setGUIManager(null);
+				Mode.setMode(handler.getGame().settingsMode);
 				
 			}}));
 	}
@@ -58,8 +68,8 @@ public class MenuMode extends Mode {
 		g.setColor(Color.WHITE);
 		g.fillRect(0, 0, 640, 480);
 		g.drawImage(Assets.ivo, 0, 0, null);
+		g.drawImage(Assets.thc, 0, 400, null);
 		Text.drawString(g, "NSULUOFUO", 320, 100, true, Color.WHITE, Assets.head);
-		Text.drawString(g, "THC-Productions", 320, 450, true, Color.WHITE, Assets.text);
 		guiManager.render(g);
 		
 	}

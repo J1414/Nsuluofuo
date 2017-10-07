@@ -20,6 +20,7 @@ public class Assets {
 	public static BufferedImage background;
 	public static BufferedImage gameO;
 	public static BufferedImage ivo;
+	public static BufferedImage thc;
 
 	public static void initialize() {
 
@@ -33,8 +34,10 @@ public class Assets {
 		SpriteSheet items = new SpriteSheet(ImageLoader.loadImage("/textures/Items.png"));
 		SpriteSheet gui = new SpriteSheet(ImageLoader.loadImage("/textures/GUI.png"));
 		SpriteSheet uli = new SpriteSheet(ImageLoader.loadImage("/textures/uli.jpg"));
+		SpriteSheet thct = new SpriteSheet(ImageLoader.loadImage("/textures/THC Schriftzug.png"));
 
 		ivo = uli.split(0, 0, 640, 480);
+		thc = thct.split(0,0, 100, 80);
 
 		/* GUI */
 		start_btn = new BufferedImage[2];
@@ -46,8 +49,8 @@ public class Assets {
 		close_button[1] = gui.split(0, 6 * height, 4 * width, 2 * height);
 
 		settings_button = new BufferedImage[2];
-		settings_button[0] = gui.split(0, 6 * height, 4 * width, 2 * height);
-		settings_button[1] = gui.split(0, 8 * height, 4 * width, 2 * height);
+		settings_button[0] = gui.split(0, 8 * height, 4 * width, 2 * height);
+		settings_button[1] = gui.split(0, 10 * height, 4 * width, 2 * height);
 
 		/* Animations */
 		player_down = new BufferedImage[2];
