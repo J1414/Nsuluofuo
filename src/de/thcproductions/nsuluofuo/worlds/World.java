@@ -17,6 +17,7 @@ public class World {
 	private int width, height;
 	private int spawnX, spawnY;
 	private int spawnX2, spawnY2;
+	private String name, name2;
 	private int[][] tiles;
 	private Handler handler;
 	private EntityManager entityManager;
@@ -48,6 +49,7 @@ public class World {
 	}
 
 	public Tile getTile(int x, int y) {
+
 		if (x < 0 || y < 0 || x >= width || y >= height) {
 			return Tile.grassTile;
 		}
@@ -66,21 +68,24 @@ public class World {
 		height = Utils.parseInt(tokens[1]);
 		spawnX = Utils.parseInt(tokens[2]);
 		spawnY = Utils.parseInt(tokens[3]);
-
+		spawnX2 = Utils.parseInt(tokens[4]);
+		spawnY2 = Utils.parseInt(tokens[5]);
+		name = tokens[6];
+		name2 = tokens[7];
+		
 		tiles = new int[width][height];
 		for (int y = 0; y < height; y++) {
 			for (int x = 0; x < width; x++) {
-				tiles[x][y] = Utils.parseInt(tokens[(x + y * width) + 4]);
+				tiles[x][y] = Utils.parseInt(tokens[(x + y * width) + 8]);
 			}
 		}
 	}
 
 	public World(Handler handler, String path) {
 		this.handler = handler;
-		entityManager = new EntityManager(handler, new Player(handler, 100, 100));
+		entityManager = new EntityManager(handler, new Player(handler, spawnX, spawnY), new Player2(handler, spawnX2, spawnY2));
 		
 		itemManager = new ItemManager(handler);
-		entityManager.addEntity(new Player2(handler, 10, 2));
 		
 		/* Statics */
 		
@@ -97,10 +102,18 @@ public class World {
 		loadWorld(path);
 		entityManager.getPlayer().setX(spawnX * entityManager.getPlayer().getWidth());
 		entityManager.getPlayer().setY(spawnY * entityManager.getPlayer().getWidth());
+		
+		entityManager.getPlayer2().setX(spawnX2 * entityManager.getPlayer2().getWidth());
+		entityManager.getPlayer2().setY(spawnY2 * entityManager.getPlayer2().getWidth());
+		System.out.println("Player1: " + name + "\nPlayer2: " + name2);
 	}
 	
 	private void drawTrees(){
-		entityManager.addEntity(new Tree(handler, 10, 10, width, height));
+		for(int x = 0; x < 5; x++) {
+			for(int y = -1; y < 5; y++) {
+				entityManager.addEntity(new Tree(handler, x, y, width, height));
+			}
+		}
 	}
 	
 	private void drawMobs(){

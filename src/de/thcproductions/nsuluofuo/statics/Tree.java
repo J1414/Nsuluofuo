@@ -13,8 +13,8 @@ public class Tree extends StaticEntity{
 
 	public Tree(Handler handler, float x, float y, int width, int height) {
 		super(handler, x, y, Creature.DEFAULT_CREATURE_WIDTH, 2* Creature.DEFAULT_CREATURE_HEIGHT);
-		this.x = x;
-		this.y = y;
+		this.x = x * 32;
+		this.y = y * 32;
 	}
 
 	@Override
@@ -25,7 +25,7 @@ public class Tree extends StaticEntity{
 
 	@Override
 	public void render(Graphics g) {
-		g.drawImage(Assets.tree, (int)x, (int)y, null);
+		g.drawImage(Assets.tree, (int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera().getyOffset()), null);
 		
 	}
 

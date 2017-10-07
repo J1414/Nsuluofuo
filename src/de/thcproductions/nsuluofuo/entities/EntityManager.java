@@ -6,12 +6,14 @@ import java.util.Comparator;
 import java.util.Iterator;
 
 import de.thcproductions.nsuluofuo.creatures.Player;
+import de.thcproductions.nsuluofuo.creatures.Player2;
 import de.thcproductions.nsuluofuo.main.Handler;
 
 public class EntityManager {
 
 	private Handler handler;
 	private Player player;
+	private Player2 player2;
 	private ArrayList<Entity> entities;
 	private Comparator<Entity> renderSorter = new Comparator<Entity>() {
 		public int compare(Entity a, Entity b) {
@@ -22,11 +24,13 @@ public class EntityManager {
 		}
 	};
 
-	public EntityManager(Handler handler, Player player) {
+	public EntityManager(Handler handler, Player player, Player2 player2) {
 		this.handler = handler;
 		this.player = player;
+		this.player2 = player2;
 		entities = new ArrayList<Entity>();
 		addEntity(player);
+		addEntity(player2);
 		
 	}
 
@@ -78,5 +82,15 @@ public class EntityManager {
 	public void setEntities(ArrayList<Entity> entities) {
 		this.entities = entities;
 	}
+
+	public Player2 getPlayer2() {
+		return player2;
+	}
+
+	public void setPlayer2(Player2 player2) {
+		this.player2 = player2;
+	}
+	
+	
 
 }
