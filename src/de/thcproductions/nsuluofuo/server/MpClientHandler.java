@@ -10,7 +10,7 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.ArrayList;
 
-import de.thcproductions.snuluofuo.multiplayer.MpCharacter;
+import de.thcproductions.nsuluofuo.multiplayer.MpCharacter;
 
 public class MpClientHandler implements Runnable{
 	

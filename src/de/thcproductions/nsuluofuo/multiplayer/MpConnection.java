@@ -1,4 +1,4 @@
-package de.thcproductions.snuluofuo.multiplayer;
+package de.thcproductions.nsuluofuo.multiplayer;
 
 // Felix @ THC Productions 5.10.2017
 import java.io.BufferedReader;

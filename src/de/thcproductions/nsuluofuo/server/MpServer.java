@@ -5,7 +5,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 
-import de.thcproductions.snuluofuo.multiplayer.MpCharacter;
+import de.thcproductions.nsuluofuo.multiplayer.MpCharacter;
 
 public class MpServer {
 	private ServerSocket serversoc;
