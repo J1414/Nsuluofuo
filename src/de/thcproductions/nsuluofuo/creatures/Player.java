@@ -200,19 +200,7 @@ public class Player extends Creature {
 			currentPosition = animUp.getCurrentFrame();
 		} else if (getyMove() > 0) {
 			currentPosition = animDown.getCurrentFrame();
-		} else if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_A)
-				&& currentPosition == animDown.getCurrentFrame()) {
-			currentPosition = Assets.atkDown;
-		} else if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_A)
-				&& currentPosition == animLeft.getCurrentFrame()) {
-			currentPosition = Assets.atkLeft;
-		} else if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_A)
-				&& currentPosition == animUp.getCurrentFrame()) {
-			currentPosition = Assets.atkUp;
-		} else if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_A)
-				&& currentPosition == animRight.getCurrentFrame()) {
-			currentPosition = Assets.atkRight;
-		}
+		} 
 
 		else if (currentPosition == null) {
 
