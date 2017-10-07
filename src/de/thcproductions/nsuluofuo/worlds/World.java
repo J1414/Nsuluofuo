@@ -18,6 +18,7 @@ public class World {
 	private int spawnX, spawnY;
 	private int spawnX2, spawnY2;
 	private String name, name2;
+	private int health, health2;
 	private int[][] tiles;
 	private Handler handler;
 	private EntityManager entityManager;
@@ -72,11 +73,13 @@ public class World {
 		spawnY2 = Utils.parseInt(tokens[5]);
 		name = tokens[6];
 		name2 = tokens[7];
+		health = Utils.parseInt(tokens[8]);
+		health2 = Utils.parseInt(tokens[9]);
 		
 		tiles = new int[width][height];
 		for (int y = 0; y < height; y++) {
 			for (int x = 0; x < width; x++) {
-				tiles[x][y] = Utils.parseInt(tokens[(x + y * width) + 8]);
+				tiles[x][y] = Utils.parseInt(tokens[(x + y * width) + 10]);
 			}
 		}
 	}
@@ -105,7 +108,10 @@ public class World {
 		
 		entityManager.getPlayer2().setX(spawnX2 * entityManager.getPlayer2().getWidth());
 		entityManager.getPlayer2().setY(spawnY2 * entityManager.getPlayer2().getWidth());
-		System.out.println("Player1: " + name + "\nPlayer2: " + name2);
+		
+		entityManager.getPlayer().setMaxHealth(health);
+		entityManager.getPlayer2().setMaxHealth(health);
+		System.out.println("Player1: " + name + " > "  + health  + "\nPlayer2: " + name2 + " > " + health2);
 	}
 	
 	private void drawTrees(){
