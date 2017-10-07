@@ -91,7 +91,7 @@ public class Assets {
 
 		/* Entities */
 
-		tree = terrain.split(2 * width, 0, width, 2 * height);
+		tree = terrain.split(2 * width, 2* height, width, 2 * height);
 		rock = terrain.split(3 * width, 0, width, height);
 		largeRock = terrain.split(3 * width, 2 * height, width, 2 * height);
 
