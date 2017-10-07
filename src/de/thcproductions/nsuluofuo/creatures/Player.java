@@ -50,7 +50,7 @@ public class Player extends Creature {
 
 		setMaxExp(100);
 		setExp(1);
-		setMaxHealth(100);
+		setMaxHealth(6);
 		setHealth(getMaxHealth());
 		setSpeed(DEFAULT_SPEED);
 		setStrength(getCurrentWeapon().getAttack());

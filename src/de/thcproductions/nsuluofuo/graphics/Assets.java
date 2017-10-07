@@ -12,6 +12,8 @@ public class Assets {
 
 	public static BufferedImage playerDown, playerUp, playerLeft, playerRight;
 	public static BufferedImage mNpcUp, mNpcDown, mNpcLeft, mNpcRight, fNpcUp, fNpcDown, fNpcLeft, fNpcRight;
+	
+	public static BufferedImage heart, hheart;
 
 	public static BufferedImage trivel, money, triviartefakt, dsword, msword, tsword;
 	public static BufferedImage[] start_btn, close_button, settings_button, player_down, player_up, player_left,
@@ -35,9 +37,17 @@ public class Assets {
 		SpriteSheet gui = new SpriteSheet(ImageLoader.loadImage("/textures/GUI.png"));
 		SpriteSheet uli = new SpriteSheet(ImageLoader.loadImage("/textures/uli.jpg"));
 		SpriteSheet thct = new SpriteSheet(ImageLoader.loadImage("/textures/THC Schriftzug.png"));
+		SpriteSheet health = new SpriteSheet(ImageLoader.loadImage("/textures/health.png"));
 
+		/* big pictures */
+			
 		ivo = uli.split(0, 0, 640, 480);
 		thc = thct.split(0,0, 100, 80);
+		
+		/* Health*/
+		
+		heart = health.split(0, 0, 16, 16);
+		hheart = health.split(16,0,16,16);
 
 		/* GUI */
 		start_btn = new BufferedImage[2];

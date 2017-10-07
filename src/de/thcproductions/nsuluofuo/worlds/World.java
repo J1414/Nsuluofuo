@@ -73,13 +73,11 @@ public class World {
 		spawnY2 = Utils.parseInt(tokens[5]);
 		name = tokens[6];
 		name2 = tokens[7];
-		health = Utils.parseInt(tokens[8]);
-		health2 = Utils.parseInt(tokens[9]);
-		
+	
 		tiles = new int[width][height];
 		for (int y = 0; y < height; y++) {
 			for (int x = 0; x < width; x++) {
-				tiles[x][y] = Utils.parseInt(tokens[(x + y * width) + 10]);
+				tiles[x][y] = Utils.parseInt(tokens[(x + y * width) + 8]);
 			}
 		}
 	}
@@ -109,8 +107,6 @@ public class World {
 		entityManager.getPlayer2().setX(spawnX2 * entityManager.getPlayer2().getWidth());
 		entityManager.getPlayer2().setY(spawnY2 * entityManager.getPlayer2().getWidth());
 		
-		entityManager.getPlayer().setMaxHealth(health);
-		entityManager.getPlayer2().setMaxHealth(health);
 		System.out.println("Player1: " + name + " > "  + health  + "\nPlayer2: " + name2 + " > " + health2);
 	}
 	
@@ -155,5 +151,23 @@ public class World {
 	public void setItemManager(ItemManager itemManager) {
 		this.itemManager = itemManager;
 	}
+
+	public int getHealth() {
+		return health;
+	}
+
+	public void setHealth(int health) {
+		this.health = health;
+	}
+
+	public int getHealth2() {
+		return health2;
+	}
+
+	public void setHealth2(int health2) {
+		this.health2 = health2;
+	}
+	
+	
 
 }
