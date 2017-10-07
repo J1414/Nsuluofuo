@@ -111,11 +111,12 @@ public class World {
 	}
 	
 	private void drawTrees(){
-		for(int x = 0; x < 5; x++) {
-			for(int y = -1; y < 5; y++) {
-				entityManager.addEntity(new Tree(handler, x, y, width, height));
-			}
-		}
+		entityManager.addEntity(new Tree(handler, 6, 0, width, height));
+		entityManager.addEntity(new Tree(handler, 7, 0, width, height));
+		entityManager.addEntity(new Tree(handler, 7, 1, width, height));
+		entityManager.addEntity(new Tree(handler, 8, 2, width, height));
+		entityManager.addEntity(new Tree(handler, 9, 2, width, height));
+
 	}
 	
 	private void drawMobs(){
