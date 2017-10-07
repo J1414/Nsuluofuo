@@ -30,15 +30,13 @@ public class Player extends Creature {
 	private PlayerInfo info;
 	private Trivel trivel;
 
-	
-
 	public Player(Handler handler, float x, float y) {
 		super(handler, x, y, Creature.DEFAULT_CREATURE_WIDTH, Creature.DEFAULT_CREATURE_HEIGHT);
 
 		info = new PlayerInfo(handler);
 		inventory = new Inventory(handler);
 		trivel = new Trivel(handler);
-		
+
 		currentWeapon = new Item(null, null, 0, 0, 5, 0);
 		bounds.x = 8;
 		bounds.y = 16;
@@ -62,7 +60,7 @@ public class Player extends Creature {
 
 	@Override
 	public void update() {
-		
+
 		animDown.update();
 		animUp.update();
 		animLeft.update();
@@ -77,12 +75,11 @@ public class Player extends Creature {
 		inventory.update();
 		trivel.update();
 
-		
 	}
 
 	public void checkAttack() {
 
-		if (inventory.isActive() ||  info.isActive() || trivel.isActive()) {
+		if (inventory.isActive() || info.isActive() || trivel.isActive()) {
 			return;
 		}
 
@@ -115,7 +112,7 @@ public class Player extends Creature {
 
 	public void checkEntity() {
 
-		if (inventory.isActive() ||  info.isActive() || trivel.isActive()) {
+		if (inventory.isActive() || info.isActive() || trivel.isActive()) {
 			return;
 		}
 
@@ -147,7 +144,7 @@ public class Player extends Creature {
 		setxMove(0);
 		setyMove(0);
 
-		if (inventory.isActive() ||  info.isActive() || trivel.isActive()) {
+		if (inventory.isActive() || info.isActive() || trivel.isActive()) {
 			return;
 		}
 
@@ -188,7 +185,7 @@ public class Player extends Creature {
 		inventory.render(g);
 		trivel.render(g);
 		info.render(g);
-		
+
 	}
 
 	private BufferedImage getCurrentAnimationFrame() {
@@ -200,7 +197,7 @@ public class Player extends Creature {
 			currentPosition = animUp.getCurrentFrame();
 		} else if (getyMove() > 0) {
 			currentPosition = animDown.getCurrentFrame();
-		} 
+		}
 
 		else if (currentPosition == null) {
 
@@ -215,7 +212,7 @@ public class Player extends Creature {
 		info.render(g);
 		inventory.render(g);
 		trivel.render(g);
-		
+
 	}
 
 	public Inventory getInventory() {
@@ -337,9 +334,5 @@ public class Player extends Creature {
 	public void setTrivel(Trivel trivel) {
 		this.trivel = trivel;
 	}
-
-	
-	
-	
 
 }

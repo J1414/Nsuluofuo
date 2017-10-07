@@ -26,6 +26,7 @@ public class Assets {
 		head = FontLoader.loadFont("res/fonts/saoFont.ttf", 128);
 		text = FontLoader.loadFont("res/fonts/saoFont.ttf", 64);
 		smallText = FontLoader.loadFont("res/fonts/saoFont.ttf", 24);
+		
 		SpriteSheet player = new SpriteSheet(ImageLoader.loadImage("/textures/Player.png"));
 		SpriteSheet npc = new SpriteSheet(ImageLoader.loadImage("/textures/NPC.png"));
 		SpriteSheet terrain = new SpriteSheet(ImageLoader.loadImage("/textures/terrain.png"));
@@ -73,8 +74,6 @@ public class Assets {
 		tsword = items.split(width, 2 * height, width, height);
 
 		/* Entities */
-
-		// Skull Reaper
 
 		tree = terrain.split(2 * width, 0, width, 2 * height);
 		rock = terrain.split(3 * width, 0, width, height);
