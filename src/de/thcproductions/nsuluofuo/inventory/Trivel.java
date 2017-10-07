@@ -11,10 +11,11 @@ public class Trivel {
 	private Handler handler;
 	private Graphics g;
 	private boolean active;
+	private Color trivel;
 	
 	public Trivel(Handler handler){
 		this.handler = handler;
-		
+		trivel = new Color(245,245,220);
 	}
 	
 	public void update(){
@@ -41,24 +42,24 @@ public class Trivel {
 		}
 		g.setColor(Color.BLUE);
 		g.fillRoundRect(20, 20, 600, 440,5,5);
-		g.setColor(Color.WHITE);
+		g.setColor(trivel);
 		g.fillRoundRect(30, 30, 580, 420, 5, 5);
 		g.setColor(Color.BLACK);
 		g.drawLine(319, 30, 319, 450);
 		
 		g.setColor(Color.BLACK);
-		g.fillRect(304, 471, 8, 8);
+		g.fillRect(304, 466, 8, 8);
 		
-		g.fillRect(316, 471, 8, 8);
+		g.fillRect(316, 466, 8, 8);
 		
-		g.fillRect(328, 471, 8, 8);
+		g.fillRect(328, 466, 8, 8);
 		
 		g.setColor(Color.BLUE);
-		g.fillRect(305, 472, 6, 6);
+		g.fillRect(305, 467, 6, 6);
 		g.setColor(Color.WHITE);
-		g.fillRect(317, 472, 6, 6);
+		g.fillRect(317, 467, 6, 6);
 		g.setColor(Color.WHITE);
-		g.fillRect(329, 472, 6, 6);
+		g.fillRect(329, 467, 6, 6);
 		
 		
 	}

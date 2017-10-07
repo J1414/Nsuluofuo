@@ -58,18 +58,20 @@ public class PlayerInfo {
 		Text.drawString(g, "PlayerInfo", 320, 240, true, Color.GREEN, Assets.smallText);
 		
 		g.setColor(Color.BLACK);
-		g.fillRect(304, 471, 8, 8);
+		g.fillRect(304, 466, 8, 8);
 		
-		g.fillRect(316, 471, 8, 8);
+		g.fillRect(316, 466, 8, 8);
 		
-		g.fillRect(328, 471, 8, 8);
+		g.fillRect(328, 466, 8, 8);
 		
 		g.setColor(Color.WHITE);
-		g.fillRect(305, 472, 6, 6);
+		g.fillRect(305, 467, 6, 6);
 		g.setColor(Color.BLUE);
-		g.fillRect(317, 472, 6, 6);
+		g.fillRect(317, 467, 6, 6);
 		g.setColor(Color.WHITE);
-		g.fillRect(329, 472, 6, 6);
+		g.fillRect(329, 467, 6, 6);
+		
+		
 	}
 
 	public Handler getHandler() {
