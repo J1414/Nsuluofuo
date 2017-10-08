@@ -9,7 +9,6 @@ import de.thcproductions.nsuluofuo.multiplayer.MpCharacter;
 
 public class MpServer {
 	private ServerSocket serversoc;
-	private ArrayList<MpCharacter> characterList;
 	
 	public MpServer(int pport){
 		
@@ -20,7 +19,8 @@ public class MpServer {
 			while(true){
 			
 				Socket clientsoc = serversoc.accept();
-				new MpClientHandler(clientsoc);
+				Thread tr = new Thread(new MpClientHandler(clientsoc));
+				tr.start();
 				
 				System.out.println("Server: Client verbunden");
 				
