@@ -123,7 +123,11 @@ public class World {
 		entityManager.addEntity(new Ganja(handler, 11,3, width, height));
 		entityManager.addEntity(new Ganja(handler, 11,13, width, height));
 		
-	
+		for(int x = 15; x<25; x++) {
+			for(int y = 1; y < 10; y++) {
+				entityManager.addEntity(new Ganja(handler,x,y,width,height));
+			}
+		}
 	}
 	
 	private void drawMobs(){
