@@ -48,32 +48,38 @@ public class MpConnection {
 		writer.write("<<0:" + localPlayer.getPositionX() + "><1:" + localPlayer.getPositionY() + "><2:" + localPlayer.getBlickrichtung() + ">>\n");
 		writer.flush();
 		
-		String answer = null;
+		System.out.println("selber gsend");
+		
+		
 		
 		try {
-			while ((answer = reader.readLine()) != null) {
+			String line = reader.readLine();
+			//while ((line = reader.readLine()) != null) {
 
-				answer = answer + "\n";
-				//rtrn += s + "\n";
+				System.out.println("line da: " + line);
 				
-			}
+				characterList.clear();
+				
+				for(int i = 0; i < Integer.parseInt(line.substring(line.length() - 2, line.length() - 1)); i++){
+					characterList.add(new MpCharacter(
+					Double.parseDouble(line.substring(line.indexOf("<<0:") + 4, line.indexOf("><1:"))),
+					Double.parseDouble(line.substring(line.indexOf("><1:") + 4, line.indexOf("><2:"))),
+					Integer.parseInt(line.substring(line.indexOf("><2:") + 4, line.indexOf(">>")))));
+					
+					System.out.println("1 chrhktrt geklärt");
+					
+					line = line.substring(line.indexOf(">>") + 2, line.length());
+				}
+				
+				
+
+				
+				line = null;
+				
+			//}
 			
-			characterList.clear();
-			
-			while(answer != ""){
-				
-				characterList.add(new MpCharacter(
-						Double.parseDouble(answer.substring(4, answer.indexOf("><1:"))),
-						Double.parseDouble(answer.substring(answer.indexOf("><1:"), answer.indexOf("><2:"))),
-						Integer.parseInt(answer.substring(answer.indexOf("><3:"), answer.indexOf(">>")))));
-				//die lines stimmen noch nicht (paas sachen noch addieren)
-				
-				answer = answer.substring(answer.indexOf(">>"), answer.length());
-				
-			}
 		} catch(Exception e){
-			// muss ich noch machen
-			System.out.println("hier");
+			e.printStackTrace();
 		}
 		
 
