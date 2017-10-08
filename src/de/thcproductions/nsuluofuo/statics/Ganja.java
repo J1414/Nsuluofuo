@@ -28,7 +28,7 @@ public class Ganja extends StaticEntity{
 		this.textures[0] = Assets.ganja;
 		this.textures[1] = Assets.sGanja;
 		this.textures[2] = Assets.rGanja;
-		texture = textures[random.nextInt(2)];
+		texture = textures[random.nextInt(3)];
 		
 	}
 
