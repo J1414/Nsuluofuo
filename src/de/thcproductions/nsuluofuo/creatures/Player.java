@@ -210,10 +210,7 @@ public class Player extends Creature {
 	}
 
 	public void postRender(Graphics g) {
-		info.render(g);
-		inventory.render(g);
-		trivel.render(g);
-
+	
 	}
 
 	public Inventory getInventory() {

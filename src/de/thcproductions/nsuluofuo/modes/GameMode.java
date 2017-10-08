@@ -2,10 +2,8 @@ package de.thcproductions.nsuluofuo.modes;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.event.KeyEvent;
 
 import de.thcproductions.nsuluofuo.graphics.Assets;
-import de.thcproductions.nsuluofuo.graphics.Text;
 import de.thcproductions.nsuluofuo.input.KeyManager;
 import de.thcproductions.nsuluofuo.inventory.Dialog;
 import de.thcproductions.nsuluofuo.main.Handler;
@@ -21,6 +19,7 @@ public class GameMode extends Mode {
 	private String text, name;
 	private GUIManager guiManager;
 	private MenuMode menumode;
+	private Color daycolor;
 
 	public GameMode(Handler handler) {
 		super(handler);
@@ -59,7 +58,9 @@ public class GameMode extends Mode {
 		break;
 		}
 		Dialog.render(g);
-		
+		handler.getWorld().getEntityManager().getPlayer().getTrivel().render(g);
+		handler.getWorld().getEntityManager().getPlayer().getInventory().render(g);
+		handler.getWorld().getEntityManager().getPlayer().getInfo().render(g);
 	
 	}
 

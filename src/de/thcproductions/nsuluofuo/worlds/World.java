@@ -1,5 +1,6 @@
 package de.thcproductions.nsuluofuo.worlds;
 
+import java.awt.Color;
 import java.awt.Graphics;
 
 import de.thcproductions.nsuluofuo.creatures.Malenica;
@@ -8,6 +9,8 @@ import de.thcproductions.nsuluofuo.creatures.Player;
 import de.thcproductions.nsuluofuo.creatures.Player2;
 import de.thcproductions.nsuluofuo.entities.EntityManager;
 import de.thcproductions.nsuluofuo.graphics.tiles.Tile;
+import de.thcproductions.nsuluofuo.inventory.Inventory;
+import de.thcproductions.nsuluofuo.inventory.PlayerInfo;
 import de.thcproductions.nsuluofuo.item.ItemManager;
 import de.thcproductions.nsuluofuo.main.Handler;
 import de.thcproductions.nsuluofuo.statics.Ganja;
@@ -24,6 +27,7 @@ public class World {
 	private int[][] tiles;
 	private Handler handler;
 	private EntityManager entityManager;
+	private Color daycolor;
 
 	private ItemManager itemManager;
 
@@ -48,7 +52,10 @@ public class World {
 			}
 		}
 		itemManager.render(g);
+		
 		entityManager.render(g);
+		g.setColor(daycolor);
+		g.fillRect(0, 0, 640, 480);
 	}
 
 	public Tile getTile(int x, int y) {
@@ -86,6 +93,11 @@ public class World {
 
 	public World(Handler handler, String path) {
 		this.handler = handler;
+		if(System.currentTimeMillis() > 17*3600000 &&  System.currentTimeMillis()< 20*3600000 || (System.currentTimeMillis() > 6*3600000 && System.currentTimeMillis() < 8*3600000)) {
+			daycolor = new Color(255,0,0,100);
+		}else if(System.currentTimeMillis()> 20*3600000 || System.currentTimeMillis()<3600000) {
+			daycolor = new Color(0,0,255,100);
+		}
 		entityManager = new EntityManager(handler, new Player(handler, spawnX, spawnY), new Player2(handler, spawnX2, spawnY2));
 		
 		itemManager = new ItemManager(handler);
