@@ -8,29 +8,26 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.net.Socket;
-import java.util.ArrayList;
-
-import de.thcproductions.nsuluofuo.multiplayer.MpCharacter;
 
 public class MpClientHandler implements Runnable{
 	
 	private Socket clientsoc;
-	private static ArrayList<MpCharacter> characterList;
-	private static int anz = 0;
-	private int index = 0;
+	private static String characters = "";
+	private static int index = 0;
 	
 	public MpClientHandler(Socket pclientsoc) {
 		clientsoc = pclientsoc;
-		run();
 	}
 
 	@Override
 	public void run() {
+		
+		index ++;
+		final int thisIndex = index;
+		System.out.println("Neuer Index: " + index);
 
 		try {
 			
-			index = anz;
-			anz = anz + 1;
 
 			OutputStream out = clientsoc.getOutputStream();
 			PrintWriter writer = new PrintWriter(out);
@@ -38,9 +35,7 @@ public class MpClientHandler implements Runnable{
 			InputStream in = clientsoc.getInputStream();
 			BufferedReader reader = new BufferedReader(new InputStreamReader(in));
 			
-			ArrayList<MpCharacter> icharacterList = new ArrayList<MpCharacter>();
-			MpCharacter thisCharacter = new MpCharacter(23, 43, 1);
-			icharacterList.add(thisCharacter);
+			characters = characters +"(" + thisIndex +  "<<0:0><1:0><2:0>>" +  thisIndex + ")";
 
 			String s = null;
 
@@ -52,25 +47,22 @@ public class MpClientHandler implements Runnable{
 				System.out.println(s.substring(s.indexOf("><1:") + 4, s.indexOf("><2:")));
 				System.out.println(s.substring(s.indexOf("><2:") + 4, s.indexOf(">>")));
 				
-				icharacterList.set(index, new MpCharacter(
+				String cpt1 = characters.substring(0, characters.indexOf("(" + thisIndex) + 2);
+				String cpt2 = characters.substring(characters.indexOf(thisIndex + ")"), characters.length());
+				
+				characters = cpt1 + s + cpt2;
+				
+				System.out.println("Characters: " + characters);
+				
+				/*icharacterList.set(index, new MpCharacter(
 						Double.parseDouble(s.substring(4, s.indexOf("><1:"))),
 						Double.parseDouble(s.substring(s.indexOf("><1:") + 4, s.indexOf("><2:"))),
-						Integer.parseInt(s.substring(s.indexOf("><2:") + 4, s.indexOf(">>")))));
+						Integer.parseInt(s.substring(s.indexOf("><2:") + 4, s.indexOf(">>")))));*/
 				//die lines stimmen noch nicht (paas sachen noch addieren) gleiche wie in mpconnection / mayb müssen neue zeilen hin bei fehlern
-
-				
 				
 				s = null;
 				
-				String answer = "";
-				
-				for (int i = 0; i < icharacterList.size(); i++){
-					
-					answer = answer + "<<0:" + icharacterList.get(i).getPositionX() + "><1:" + icharacterList.get(i).getPositionY() + "><2:" + icharacterList.get(i).getBlickrichtung() + ">>\n";
-					
-				}
-				
-				writer.write(answer);
+				writer.write(characters);
 				writer.flush();
 
 			}
