@@ -38,6 +38,7 @@ public class Assets {
 		SpriteSheet uli = new SpriteSheet(ImageLoader.loadImage("/textures/uli.jpg"));
 		SpriteSheet thct = new SpriteSheet(ImageLoader.loadImage("/textures/THC Schriftzug.png"));
 		SpriteSheet health = new SpriteSheet(ImageLoader.loadImage("/textures/health.png"));
+		SpriteSheet mal = new SpriteSheet(ImageLoader.loadImage("/textures/Cofezuwo.png"));
 
 		/* big pictures */
 			
@@ -64,8 +65,10 @@ public class Assets {
 
 		/* Animations */
 		player_down = new BufferedImage[2];
-		player_down[0] = player.split(0, 0, width, height);
-		player_down[1] = player.split(2 * width, 0, width, height);
+		player_down[0] = mal.split(0, 0, width, height);
+		player_down[1] = mal.split(2 * width, 0, width, height);
+		
+		
 
 		player_up = new BufferedImage[2];
 		player_up[0] = player.split(0, 3 * height, width, height);
@@ -117,6 +120,8 @@ public class Assets {
 		mNpcLeft = npc.split(width, height, width, height);
 		mNpcRight = npc.split(width, 2 * height, width, height);
 		mNpcUp = npc.split(width, 3 * height, width, height);
+		
+		// Ivo Malenica
 
 		/* Tiles */
 		grass = terrain.split(0, 0, width, height);
