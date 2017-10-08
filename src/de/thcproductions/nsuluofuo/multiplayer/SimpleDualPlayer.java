@@ -37,7 +37,7 @@ public class SimpleDualPlayer {
 	}
 	
 	public static boolean isReady(){
-		
+		connection.update();
 		if(connection.getCharacterList().size() > 1){
 			return true;
 		}

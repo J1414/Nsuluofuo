@@ -1,7 +1,5 @@
 package de.thcproductions.nsuluofuo.main;
 
-import de.thcproductions.nsuluofuo.server.MpServer;
-
 public class Launcher {
 
 	public static void main(String[] args) {
