@@ -26,6 +26,7 @@ public class Game implements Runnable {
 	private Graphics g;
 	private KeyManager keyManager;
 	private Handler handler;
+	private int ticks;
 
 	// States
 
@@ -107,7 +108,7 @@ public class Game implements Runnable {
 		long now;
 		long lastTime = System.nanoTime();
 		long timer = 0;
-		int ticks = 0;
+		ticks = 0;
 
 		while (isRunning()) {
 			now = System.nanoTime();
@@ -123,7 +124,6 @@ public class Game implements Runnable {
 			}
 
 			if (timer >= 1000000000) {
-				System.out.println("FPS: " + ticks);
 				ticks = 0;
 				timer = 0;
 			}
@@ -186,6 +186,14 @@ public class Game implements Runnable {
 
 	public void setMenuMode(Mode menuMode) {
 		this.menuMode = menuMode;
+	}
+
+	public int getTicks() {
+		return ticks;
+	}
+
+	public void setTicks(int ticks) {
+		this.ticks = ticks;
 	}
 	
 	

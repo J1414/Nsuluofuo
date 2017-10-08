@@ -1,9 +1,11 @@
 package de.thcproductions.nsuluofuo.modes;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 
 import de.thcproductions.nsuluofuo.graphics.Assets;
+import de.thcproductions.nsuluofuo.graphics.Text;
 import de.thcproductions.nsuluofuo.input.KeyManager;
 import de.thcproductions.nsuluofuo.inventory.Dialog;
 import de.thcproductions.nsuluofuo.main.Handler;
@@ -57,6 +59,7 @@ public class GameMode extends Mode {
 		break;
 		}
 		Dialog.render(g);
+		
 	
 	}
 

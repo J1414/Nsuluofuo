@@ -14,11 +14,17 @@ public class NPC extends Creature {
 	private boolean active;
 	private String name;
 	private String text;
+	private String text2;
+	private String text3;
+	private String text4;
+	private String text5;
+	private String text6;
+	private String text7;
 	private float x,y;
 	private Rectangle sbounds;
 	private BufferedImage currentPosition = Assets.mNpcDown;
 
-	public NPC(Handler handler, float x, float y, String name, String text) {
+	public NPC(Handler handler, float x, float y, String name, String text, String text2, String text3, String text4, String text5, String text6, String text7) {
 		super(handler, x, y, DEFAULT_CREATURE_WIDTH, DEFAULT_CREATURE_HEIGHT);
 		this.x = x*32;
 		this.y = y*32;
@@ -29,6 +35,12 @@ public class NPC extends Creature {
 		sbounds = new Rectangle((int) getX() - 5, (int) getY() - 5, getWidth() + 10, getHeight() + 10);
 		this.name = name;
 		this.text = text;
+		this.text2 = text2;
+		this.text3 = text3;
+		this.text4 = text4;
+		this.text5 = text5;
+		this.text6 = text6;
+		this.text7 = text7;
 		setHealth(100000);
 
 	}
@@ -43,6 +55,12 @@ public class NPC extends Creature {
 			Dialog.setActive(!(Dialog.isActive()));
 			Dialog.text = text;
 			Dialog.name = name;
+			Dialog.text2 = text2;
+			Dialog.text3 = text3;
+			Dialog.text4 = text4;
+			Dialog.text5 = text5;
+			Dialog.text6 = text6;
+			Dialog.text7 = text7;
 			if (handler.getWorld().getEntityManager().getPlayer().getCurrentPosition() == handler.getWorld()
 					.getEntityManager().getPlayer().getAnimDown().getCurrentFrame()) {
 				currentPosition = Assets.mNpcUp;
