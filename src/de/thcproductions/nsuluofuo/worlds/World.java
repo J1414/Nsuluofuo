@@ -111,6 +111,7 @@ public class World {
 		entityManager.getPlayer2().setY(spawnY2 * entityManager.getPlayer2().getWidth());
 		
 		System.out.println("Player1: " + name + " > "  + health  + "\nPlayer2: " + name2 + " > " + health2);
+		
 	}
 	
 	private void drawTrees(){

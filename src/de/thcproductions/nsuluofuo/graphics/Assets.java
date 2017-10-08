@@ -18,7 +18,7 @@ public class Assets {
 
 	public static BufferedImage trivel, money, triviartefakt, dsword, msword, tsword, jibbet, monster;
 	public static BufferedImage[] start_btn, close_button, settings_button, player_down, player_up, player_left,
-			player_right, ivo_down, ivo_left, ivo_right, ivo_up;
+			player_right, ivo_down, ivo_left, ivo_right, ivo_up, watera;
 	public static Font head, text, smallText;
 	public static BufferedImage background;
 	public static BufferedImage gameO;
@@ -40,6 +40,7 @@ public class Assets {
 		SpriteSheet thct = new SpriteSheet(ImageLoader.loadImage("/textures/THC Schriftzug.png"));
 		SpriteSheet health = new SpriteSheet(ImageLoader.loadImage("/textures/health.png"));
 		SpriteSheet mal = new SpriteSheet(ImageLoader.loadImage("/textures/Cofezuwo.png"));
+		SpriteSheet aWater = new SpriteSheet(ImageLoader.loadImage("/textures/Water.png"));
 
 		/* big pictures */
 			
@@ -96,6 +97,40 @@ public class Assets {
 		ivo_right = new BufferedImage[2];
 		ivo_right[0] = mal.split(0, 2 * height, width, height);
 		ivo_right[1] = mal.split(2 * width, 2 * height, width, height);
+		
+		watera = new BufferedImage[32];
+		watera[0] = aWater.split(0, 0, width, height);
+		watera[1] = aWater.split(0, height, width, height);
+		watera[2] = aWater.split(0, 2*height, width, height);
+		watera[3] = aWater.split(0, 3*height, width, height);
+		watera[4] = aWater.split(0, 4*height, width, height);
+		watera[5] = aWater.split(0, 5*height, width, height);
+		watera[6] = aWater.split(0, 6*height, width, height);
+		watera[7] = aWater.split(0, 7*height, width, height);
+		watera[8] = aWater.split(0, 8*height, width, height);
+		watera[9] = aWater.split(0, 9*height, width, height);
+		watera[10] = aWater.split(0, 10*height, width, height);
+		watera[11] = aWater.split(0,11*height, width, height);
+		watera[12] = aWater.split(0, 12*height, width, height);
+		watera[13] = aWater.split(0, 13*height, width, height);
+		watera[14] = aWater.split(0, 14*height, width, height);
+		watera[15] = aWater.split(0, 15*height, width, height);
+		watera[16] = aWater.split(0, 16*height, width, height);
+		watera[17] = aWater.split(0, 17*height, width, height);
+		watera[18] = aWater.split(0, 18*height, width, height);
+		watera[19] = aWater.split(0, 19*height, width, height);
+		watera[20] = aWater.split(0, 20*height, width, height);
+		watera[21] = aWater.split(0, 21*height, width, height);
+		watera[22] = aWater.split(0, 22*height, width, height);
+		watera[23] = aWater.split(0, 23*height, width, height);
+		watera[24] = aWater.split(0, 24*height, width, height);
+		watera[25] = aWater.split(0, 25*height, width, height);
+		watera[26] = aWater.split(0, 26*height, width, height);
+		watera[27] = aWater.split(0, 27*height, width, height);
+		watera[28] = aWater.split(0, 28*height, width, height);
+		watera[29] = aWater.split(0, 29*height, width, height);
+		watera[30] = aWater.split(0, 30*height, width, height);
+		watera[31] = aWater.split(0, 31*height, width, height);
 
 		/* Items */
 		
