@@ -125,7 +125,7 @@ public class World {
 		
 		for(int x = 15; x<25; x++) {
 			for(int y = 1; y < 10; y++) {
-				entityManager.addEntity(new Ganja(handler,x,y,width,height));
+				entityManager.addEntity(new Ganja(handler,5+x,5+y,width,height));
 			}
 		}
 	}

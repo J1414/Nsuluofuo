@@ -6,7 +6,7 @@ import java.awt.image.BufferedImage;
 public class Assets {
 
 	private static final int width = 32, height = 32;
-	public static BufferedImage grass, highGrass, tree, ganja, sGanja, rGanja, water, bridge, largeRock, rock, path, stone, stoneBright, gate,
+	public static BufferedImage grass, highGrass, tree, tree2,ganja, sGanja, rGanja, water, bridge, largeRock, rock, path, stone, stoneBright, gate,
 			middleWall, mossyWall, mossyWallLeft, mossyWallRight, leftWall, rightWall, cliffDown, cliffUp, cliffLeft,
 			cliffRight, leftUpperCorner, leftBottomCorner, rightUpperCorner, rightBottomCorner;
 
@@ -112,6 +112,7 @@ public class Assets {
 		/* Entities */
 
 		tree = terrain.split(2 * width, 0, width, 2 * height);
+		tree2 = terrain.split(0, 4*height, width, 2*height);
 		ganja = terrain.split(2*width, 2*height, width, 2*height);
 		sGanja = terrain.split(width, 2*height, width, 2*height);
 		rGanja = terrain.split(0, 2*height, width, 2*height);
