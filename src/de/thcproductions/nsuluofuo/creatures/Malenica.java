@@ -20,6 +20,7 @@ public class Malenica extends NPC{
 	private String text5;
 	private String text6;
 	private String text7;
+	private BufferedImage portrait;
 	private Rectangle sbounds;
 
 	public Malenica(Handler handler, float x, float y, String text, String text2, String text3, String text4, String text5, String text6, String text7) {
@@ -33,7 +34,7 @@ public class Malenica extends NPC{
 		this.text5 = text5;
 		this.text6 = text6;
 		this.text7 = text7;
-		
+		portrait = Assets.ivof;
 	}
 	
 	public void update() {
@@ -51,6 +52,7 @@ public class Malenica extends NPC{
 			Dialog.text5 = text5;
 			Dialog.text6 = text6;
 			Dialog.text7 = text7;
+			Dialog.portrait = portrait;
 			if (handler.getWorld().getEntityManager().getPlayer().getCurrentPosition() == handler.getWorld()
 					.getEntityManager().getPlayer().getAnimDown().getCurrentFrame()) {
 				currentPosition = Assets.iMUp;

@@ -24,6 +24,7 @@ public class Assets {
 	public static BufferedImage gameO;
 	public static BufferedImage ivo;
 	public static BufferedImage thc;
+	public static BufferedImage ivof;
 
 	public static void initialize() {
 
@@ -41,11 +42,13 @@ public class Assets {
 		SpriteSheet health = new SpriteSheet(ImageLoader.loadImage("/textures/health.png"));
 		SpriteSheet mal = new SpriteSheet(ImageLoader.loadImage("/textures/Cofezuwo.png"));
 		SpriteSheet aWater = new SpriteSheet(ImageLoader.loadImage("/textures/Water.png"));
+		SpriteSheet ivoM = new SpriteSheet(ImageLoader.loadImage("/textures/mmm.jpg"));
 
 		/* big pictures */
 			
 		ivo = uli.split(0, 0, 640, 480);
 		thc = thct.split(0,0, 100, 80);
+		ivof = ivoM.split(0, 0, 120, 120);
 		
 		/* Health*/
 		

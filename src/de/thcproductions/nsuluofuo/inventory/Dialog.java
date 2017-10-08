@@ -3,6 +3,7 @@ package de.thcproductions.nsuluofuo.inventory;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
 
 import de.thcproductions.nsuluofuo.graphics.Assets;
 import de.thcproductions.nsuluofuo.graphics.Text;
@@ -22,6 +23,7 @@ public class Dialog {
 	public static String text6;
 	public static String text7;
 	public static String name;
+	public static BufferedImage portrait;
 	private static boolean active;
 	private Handler handler;
 
@@ -45,14 +47,16 @@ public class Dialog {
 		}
 		g.setColor(new Color(255,255,255,200));
 		g.fillRoundRect(20, 300, 600, 160, 20, 20);
-		Text.drawString(g, Dialog.name, 20, 300, false, Color.GREEN, Assets.smallText);
-		Text.drawString(g, Dialog.text, 320, 320, true, Color.BLACK, Assets.smallText);
-		Text.drawString(g, Dialog.text2, 320, 340, true, Color.BLACK, Assets.smallText);
-		Text.drawString(g, Dialog.text3, 320, 360, true, Color.BLACK, Assets.smallText);
-		Text.drawString(g, Dialog.text4, 320, 380, true, Color.BLACK, Assets.smallText);
-		Text.drawString(g, Dialog.text5, 320, 400, true, Color.BLACK, Assets.smallText);
-		Text.drawString(g, Dialog.text6, 320, 420, true, Color.BLACK, Assets.smallText);
-		Text.drawString(g, Dialog.text7, 320, 440, true, Color.BLACK, Assets.smallText);
+		Text.drawString(g, Dialog.name, 90, 445, true, Color.BLACK, Assets.smallText);
+		Text.drawString(g, Dialog.text, 395, 320, true, Color.BLACK, Assets.smallText);
+		Text.drawString(g, Dialog.text2, 395, 340, true, Color.BLACK, Assets.smallText);
+		Text.drawString(g, Dialog.text3, 395, 360, true, Color.BLACK, Assets.smallText);
+		Text.drawString(g, Dialog.text4, 395, 380, true, Color.BLACK, Assets.smallText);
+		Text.drawString(g, Dialog.text5, 395, 400, true, Color.BLACK, Assets.smallText);
+		Text.drawString(g, Dialog.text6, 395, 420, true, Color.BLACK, Assets.smallText);
+		Text.drawString(g, Dialog.text7, 395, 440, true, Color.BLACK, Assets.smallText);
+		
+		g.drawImage(portrait, 30, 310, null);
 	}
 
 	public static boolean isActive() {

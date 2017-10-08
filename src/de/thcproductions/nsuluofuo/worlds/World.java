@@ -101,7 +101,7 @@ public class World {
 		//NPC's
 		
 		entityManager.addEntity(new NPC(handler, 6, 3, "Pieles mit der Trivel", "Ich hasse dich, du dreckiger Hurensohn", "Du Spasst", "For Real... Realtalk jetzt", "Du geisteskranke Psychoschlampe", "Jo es ist Pieles mit der Trivel", "Wham Wham.. like Every beat, every line...", "Ab jetzt nicht mehr Lenzkirch, sondern Mechernich"));
-		entityManager.addEntity(new Malenica(handler, 4, 4,  " " ,"Konzept klar?", "Der bekloppte Trivialismus und eure scheiß App", "Mir kommts so vor als wär das alles nur ein", "RIESIGER Witz für euch", "", ""));
+		entityManager.addEntity(new Malenica(handler, 4, 4,  "Konzept klar?", "Ihr mit eurem bekloppten Trivialismus","und eurer scheiß App", "Mir kommts so vor als wär das alles nur ein", "RIESIGER Witz für euch", "Ich hasse dich nicht" , "Ich bin nur maßlos enttäuscht von dir"));
 		
 		loadWorld(path);
 		entityManager.getPlayer().setX(spawnX * entityManager.getPlayer().getWidth());
