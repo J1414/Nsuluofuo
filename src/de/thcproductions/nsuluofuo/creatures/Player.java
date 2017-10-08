@@ -8,6 +8,7 @@ import java.awt.image.BufferedImage;
 import de.thcproductions.nsuluofuo.entities.Entity;
 import de.thcproductions.nsuluofuo.graphics.Animation;
 import de.thcproductions.nsuluofuo.graphics.Assets;
+import de.thcproductions.nsuluofuo.inventory.Dialog;
 import de.thcproductions.nsuluofuo.inventory.Inventory;
 import de.thcproductions.nsuluofuo.inventory.PlayerInfo;
 import de.thcproductions.nsuluofuo.inventory.Trivel;
@@ -79,7 +80,7 @@ public class Player extends Creature {
 
 	public void checkAttack() {
 
-		if (inventory.isActive() || info.isActive() || trivel.isActive()) {
+		if (inventory.isActive() || info.isActive() || trivel.isActive() || Dialog.isActive()) {
 			return;
 		}
 
@@ -112,7 +113,7 @@ public class Player extends Creature {
 
 	public void checkEntity() {
 
-		if (inventory.isActive() || info.isActive() || trivel.isActive()) {
+		if (inventory.isActive() || info.isActive() || trivel.isActive() || Dialog.isActive()) {
 			return;
 		}
 
@@ -144,7 +145,7 @@ public class Player extends Creature {
 		setxMove(0);
 		setyMove(0);
 
-		if (inventory.isActive() || info.isActive() || trivel.isActive()) {
+		if (inventory.isActive() || info.isActive() || trivel.isActive()  || Dialog.isActive()) {
 			return;
 		}
 

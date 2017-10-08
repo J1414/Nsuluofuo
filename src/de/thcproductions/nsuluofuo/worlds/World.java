@@ -119,6 +119,7 @@ public class World {
 		entityManager.addEntity(new Tree(handler, 9, 2, width, height));
 		entityManager.addEntity(new Ganja(handler, 10,3, width, height));
 		entityManager.addEntity(new Ganja(handler, 11,3, width, height));
+		entityManager.addEntity(new Ganja(handler, 11,13, width, height));
 
 	}
 	

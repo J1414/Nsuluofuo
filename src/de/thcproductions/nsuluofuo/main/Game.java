@@ -1,6 +1,7 @@
 package de.thcproductions.nsuluofuo.main;
 
 import java.awt.Graphics;
+
 import java.awt.image.BufferStrategy;
 
 import de.thcproductions.nsuluofuo.graphics.Assets;
@@ -31,6 +32,7 @@ public class Game implements Runnable {
 	public Mode gameMode;
 	public Mode menuMode;
 	public Mode settingsMode;
+	public Mode dialogMode;
 
 
 	private MouseManager mouseManager;
@@ -67,7 +69,7 @@ public class Game implements Runnable {
 		gameMode = new GameMode(handler);
 		menuMode = new MenuMode(handler);
 		settingsMode = new SettingsMode(handler);
-
+		
 		Mode.setMode(menuMode);
 
 	}

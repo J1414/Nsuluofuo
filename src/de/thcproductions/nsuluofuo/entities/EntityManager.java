@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Iterator;
 
+import de.thcproductions.nsuluofuo.creatures.NPC;
 import de.thcproductions.nsuluofuo.creatures.Player;
 import de.thcproductions.nsuluofuo.creatures.Player2;
 import de.thcproductions.nsuluofuo.main.Handler;
@@ -14,6 +15,7 @@ public class EntityManager {
 	private Handler handler;
 	private Player player;
 	private Player2 player2;
+	private NPC npc;
 	private ArrayList<Entity> entities;
 	private Comparator<Entity> renderSorter = new Comparator<Entity>() {
 		public int compare(Entity a, Entity b) {
@@ -52,7 +54,7 @@ public class EntityManager {
 			e.render(g);
 		}
 		player.postRender(g);
-
+		
 	}
 
 	public void addEntity(Entity e) {

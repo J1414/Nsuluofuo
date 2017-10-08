@@ -1,13 +1,12 @@
 package de.thcproductions.nsuluofuo.creatures;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 
 import de.thcproductions.nsuluofuo.graphics.Assets;
-import de.thcproductions.nsuluofuo.graphics.Text;
+import de.thcproductions.nsuluofuo.inventory.Dialog;
 import de.thcproductions.nsuluofuo.main.Handler;
 
 public class NPC extends Creature {
@@ -41,8 +40,9 @@ public class NPC extends Creature {
 		}
 		if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_SPACE)
 				&& handler.getWorld().getEntityManager().getPlayer().getCollisionBounds(0f, 0f).intersects(sbounds)) {
-			active = !active;
-
+			Dialog.setActive(!(Dialog.isActive()));
+			Dialog.text = text;
+			Dialog.name = name;
 			if (handler.getWorld().getEntityManager().getPlayer().getCurrentPosition() == handler.getWorld()
 					.getEntityManager().getPlayer().getAnimDown().getCurrentFrame()) {
 				currentPosition = Assets.mNpcUp;
@@ -57,9 +57,7 @@ public class NPC extends Creature {
 				currentPosition = Assets.mNpcLeft;
 			}
 		}
-		if (!active) {
-			return;
-		}
+		
 
 	}
 
@@ -67,16 +65,8 @@ public class NPC extends Creature {
 	public void render(Graphics g) {
 		g.drawImage(currentPosition, (int) (getX() - handler.getGameCamera().getxOffset()),
 				(int) (getY() - handler.getGameCamera().getyOffset()), getWidth(), getHeight(), null);
-		if (!active) {
-			return;
-		}
-		g.setColor(Color.GRAY);
-		g.fillRect(8, 344, handler.getGame().getWidth() - 16, 128);
-		g.setColor(Color.WHITE);
-		g.fillRect(10, 346, handler.getGame().getWidth() - 20, 124);
-		Text.drawString(g, name, 10, 365, false, Color.GRAY, Assets.smallText);
-		Text.drawString(g, text, 320, 408, true, Color.GRAY, Assets.text);
-
 	}
+	
+	
 
 }
