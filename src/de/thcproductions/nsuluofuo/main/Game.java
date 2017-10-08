@@ -179,6 +179,16 @@ public class Game implements Runnable {
 			e.printStackTrace();
 		}
 	}
+
+	public Mode getMenuMode() {
+		return menuMode;
+	}
+
+	public void setMenuMode(Mode menuMode) {
+		this.menuMode = menuMode;
+	}
+	
+	
 	
 	
 

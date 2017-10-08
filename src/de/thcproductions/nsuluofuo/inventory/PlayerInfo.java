@@ -27,11 +27,18 @@ public class PlayerInfo {
 	}
 
 	public void update() {
+		
+		
+		
+		
 		if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_E)) {
+			if(Dialog.isActive()) {
+				return;
+			}
 			active = !active;
 			
 		}
-
+		
 		if (!active) {
 			return;
 		}

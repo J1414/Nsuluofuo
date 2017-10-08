@@ -23,7 +23,7 @@ public class SettingsMode extends Mode{
 	@Override
 	public void update() {
 		if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_ESCAPE)){
-			Mode.setMode(handler.getGame().gameMode);
+			Mode.setMode(handler.getGame().menuMode);
 		}
 		
 	}

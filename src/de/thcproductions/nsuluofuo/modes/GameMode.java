@@ -7,6 +7,7 @@ import de.thcproductions.nsuluofuo.graphics.Assets;
 import de.thcproductions.nsuluofuo.input.KeyManager;
 import de.thcproductions.nsuluofuo.inventory.Dialog;
 import de.thcproductions.nsuluofuo.main.Handler;
+import de.thcproductions.nsuluofuo.ui.GUIManager;
 import de.thcproductions.nsuluofuo.worlds.World;
 
 public class GameMode extends Mode {
@@ -16,11 +17,12 @@ public class GameMode extends Mode {
 
 	private KeyManager keyManager;
 	private String text, name;
-
+	private GUIManager guiManager;
+	private MenuMode menumode;
 
 	public GameMode(Handler handler) {
 		super(handler);
-		
+		guiManager = new GUIManager(handler);
 		keyManager = new KeyManager();
 		world = new World(handler, "res/worlds/world1.txt");
 		text = Dialog.text;
@@ -33,11 +35,6 @@ public class GameMode extends Mode {
 	@Override
 	public void update() {
 		world.update();
-		if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_ESCAPE)){
-			Mode.setMode(handler.getGame().settingsMode);
-		}
-		
-		
 	}
 
 	@Override

@@ -50,7 +50,6 @@ public class MenuMode extends Mode {
 			
 			@Override
 			public void onClick() {
-				handler.getMouseManager().setGUIManager(null);
 				Mode.setMode(handler.getGame().settingsMode);
 				
 			}}));
@@ -73,4 +72,18 @@ public class MenuMode extends Mode {
 		guiManager.render(g);
 		
 	}
+
+
+
+	public GUIManager getGuiManager() {
+		return guiManager;
+	}
+
+
+
+	public void setGuiManager(GUIManager guiManager) {
+		this.guiManager = guiManager;
+	}
+	
+	
 }
