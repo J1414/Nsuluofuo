@@ -1,17 +1,40 @@
 package de.thcproductions.nsuluofuo.multiplayer;
 
-// Felix @ THC Productions 5.10.2017
 public class MpCharacter {
 	private double positionX;
 	private double positionY;
-	private int blickrichtung;
+	private int dir;
+	private int id;
+	private String name = "";
 
-	public MpCharacter(double ppositionX, double ppositionY, int pblickrichting){
+	public MpCharacter(double ppositionX, double ppositionY, int pdir){
 		
 		positionX = ppositionX;
 		positionY = ppositionY;
-		blickrichtung = pblickrichting;
+		dir = pdir;
+	}
+	public MpCharacter(double ppositionX, double ppositionY, int pdir, String pname){
 		
+		positionX = ppositionX;
+		positionY = ppositionY;
+		dir = pdir;
+		name = pname;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int pid) {
+		this.id = pid;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String pname) {
+		this.name = pname;
 	}
 
 	public double getPositionX() {
@@ -30,12 +53,12 @@ public class MpCharacter {
 		this.positionY = ppositionY;
 	}
 
-	public int getBlickrichtung() {
-		return blickrichtung;
+	public int getDir() {
+		return dir;
 	}
 
-	public void setBlickrichtung(int pblickrichtung) {
-		this.blickrichtung = pblickrichtung;
+	public void setDir(int pdir) {
+		this.dir = pdir;
 	}
 	
 	

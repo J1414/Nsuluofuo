@@ -1,7 +1,7 @@
 package de.thcproductions.nsuluofuo.multiplayer;
 
-// Felix @ THC Productions 5.10.2017
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
@@ -16,17 +16,30 @@ public class MpConnection {
 	private OutputStream out;
 	private PrintWriter writer;
 	
+	private String host;
+	private int port;
+	
 	private ArrayList<MpCharacter> characterList;
 	private MpCharacter localPlayer;
-	
 	
 	public MpConnection(String phost, int pport, MpCharacter plocalPlayer){
 		try {
 			
+			host = phost;
+			port = pport;
+			
 			characterList = new ArrayList<MpCharacter>();
 			localPlayer = plocalPlayer;
 			
-			soc = new Socket(phost, pport);
+		}  catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void start(){
+		try {	
+			
+			soc = new Socket(host, port);
 			
 			in = soc.getInputStream();
 			reader = new BufferedReader(new InputStreamReader(in));
@@ -34,56 +47,52 @@ public class MpConnection {
 			out = soc.getOutputStream();
 			writer = new PrintWriter(out);
 			
+			System.out.println("Client: Connected to server");
 			
 		}  catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-			System.out.println("oder hier");
+		}
+		
+	}
+	public void stop(){
+		try {
+			
+			soc.close();
+			System.out.println("Client: Socket closed");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 
 	public void update(){
 		
-		
-		writer.write("<<0:" + localPlayer.getPositionX() + "><1:" + localPlayer.getPositionY() + "><2:" + localPlayer.getBlickrichtung() + ">>\n");
+		writer.write("<<0:" + localPlayer.getPositionX() + "><1:" + localPlayer.getPositionY() + "><2:" + localPlayer.getDir() + "><3:" + localPlayer.getName() + ">>\n");
 		writer.flush();
-		
-		System.out.println("selber gsend");
-		
-		
 		
 		try {
 			String line = reader.readLine();
-			//while ((line = reader.readLine()) != null) {
-
-				System.out.println("line da: " + line);
 				
 				characterList.clear();
+				
+				localPlayer.setId(Integer.parseInt(line.substring(line.indexOf("[") + 1, line.indexOf("]"))) - 1);
 				
 				for(int i = 0; i < Integer.parseInt(line.substring(line.length() - 2, line.length() - 1)); i++){
 					characterList.add(new MpCharacter(
 					Double.parseDouble(line.substring(line.indexOf("<<0:") + 4, line.indexOf("><1:"))),
 					Double.parseDouble(line.substring(line.indexOf("><1:") + 4, line.indexOf("><2:"))),
-					Integer.parseInt(line.substring(line.indexOf("><2:") + 4, line.indexOf(">>")))));
-					
-					System.out.println("1 chrhktrt geklärt");
+					Integer.parseInt(line.substring(line.indexOf("><2:") + 4, line.indexOf("><3:"))),
+					line.substring(line.indexOf("><3:") + 4, line.indexOf(">>"))));
 					
 					line = line.substring(line.indexOf(">>") + 2, line.length());
 				}
 				
-				
-
-				
 				line = null;
 				
-			//}
-			
 		} catch(Exception e){
 			e.printStackTrace();
 		}
-		
-
-		
+	
 	}
 
 	public ArrayList<MpCharacter> getCharacterList() {
@@ -92,6 +101,11 @@ public class MpConnection {
 
 	public void setCharacterList(ArrayList<MpCharacter> characterList) {
 		this.characterList = characterList;
+	}
+	
+	public MpCharacter getCharacter(int id){
+		
+		return characterList.get(id);
 	}
 
 	public MpCharacter getLocalPlayer() {
