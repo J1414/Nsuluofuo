@@ -11,13 +11,14 @@ public class Assets {
 			cliffRight, leftUpperCorner, leftBottomCorner, rightUpperCorner, rightBottomCorner;
 
 	public static BufferedImage playerDown, playerUp, playerLeft, playerRight;
+	public static BufferedImage iMDown, iMUp, iMLeft, iMRight;
 	public static BufferedImage mNpcUp, mNpcDown, mNpcLeft, mNpcRight, fNpcUp, fNpcDown, fNpcLeft, fNpcRight;
 	
 	public static BufferedImage heart, hheart;
 
 	public static BufferedImage trivel, money, triviartefakt, dsword, msword, tsword, jibbet, monster;
 	public static BufferedImage[] start_btn, close_button, settings_button, player_down, player_up, player_left,
-			player_right;
+			player_right, ivo_down, ivo_left, ivo_right, ivo_up;
 	public static Font head, text, smallText;
 	public static BufferedImage background;
 	public static BufferedImage gameO;
@@ -65,22 +66,36 @@ public class Assets {
 
 		/* Animations */
 		player_down = new BufferedImage[2];
-		player_down[0] = mal.split(0, 0, width, height);
-		player_down[1] = mal.split(2 * width, 0, width, height);
+		player_down[0] = player.split(0, 0, width, height);
+		player_down[1] = player.split(2 * width, 0, width, height);
 		
-		
+		ivo_down = new BufferedImage[2];
+		ivo_down[0] = mal.split(0, 0, width, height);
+		ivo_down[1] = mal.split(2 * width, 0, width, height);
 
 		player_up = new BufferedImage[2];
 		player_up[0] = player.split(0, 3 * height, width, height);
 		player_up[1] = player.split(2 * width, 3 * height, width, height);
+		
+		ivo_up = new BufferedImage[2];
+		ivo_up[0] = mal.split(0, 3 * height, width, height);
+		ivo_up[1] = mal.split(2 * width, 3 * height, width, height);
 
 		player_left = new BufferedImage[2];
 		player_left[0] = player.split(0, height, width, height);
-		player_left[1] = player.split(2 * width, height, width, height);
+		player_left[1] = player.split(2 * width, height, width, height); 
+		
+		ivo_left = new BufferedImage[2];
+		ivo_left[0] = mal.split(0, height, width, height);
+		ivo_left[1] = mal.split(2 * width, height, width, height); 
 
 		player_right = new BufferedImage[2];
 		player_right[0] = player.split(0, 2 * height, width, height);
 		player_right[1] = player.split(2 * width, 2 * height, width, height);
+		
+		ivo_right = new BufferedImage[2];
+		ivo_right[0] = mal.split(0, 2 * height, width, height);
+		ivo_right[1] = mal.split(2 * width, 2 * height, width, height);
 
 		/* Items */
 		
@@ -122,6 +137,11 @@ public class Assets {
 		mNpcUp = npc.split(width, 3 * height, width, height);
 		
 		// Ivo Malenica
+		
+		iMDown = mal.split(width, 0, width, height);
+		iMLeft = mal.split(width, 1 * height, width, height);
+		iMRight = mal.split(width, 2 * height, width, height);
+		iMUp = mal.split(width, 3 * height, width, height);
 
 		/* Tiles */
 		grass = terrain.split(0, 0, width, height);

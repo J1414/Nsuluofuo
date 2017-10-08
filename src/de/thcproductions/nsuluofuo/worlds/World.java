@@ -2,6 +2,7 @@ package de.thcproductions.nsuluofuo.worlds;
 
 import java.awt.Graphics;
 
+import de.thcproductions.nsuluofuo.creatures.Malenica;
 import de.thcproductions.nsuluofuo.creatures.NPC;
 import de.thcproductions.nsuluofuo.creatures.Player;
 import de.thcproductions.nsuluofuo.creatures.Player2;
@@ -100,6 +101,7 @@ public class World {
 		//NPC's
 		
 		entityManager.addEntity(new NPC(handler, 6, 3, "Pieles mit der Trivel", "Ich hasse dich, du dreckiger Hurensohn", "Du Spasst", "For Real... Realtalk jetzt", "Du geisteskranke Psychoschlampe", "Jo es ist Pieles mit der Trivel", "Wham Wham.. like Every beat, every line...", "Ab jetzt nicht mehr Lenzkirch, sondern Mechernich"));
+		entityManager.addEntity(new Malenica(handler, 4, 4,  "Ich hasse dich, du dreckiger Hurensohn", "Du Spasst", "For Real... Realtalk jetzt", "Du geisteskranke Psychoschlampe", "Jo es ist Pieles mit der Trivel", "Wham Wham.. like Every beat, every line...", "Ab jetzt nicht mehr Lenzkirch, sondern Mechernich"));
 		
 		loadWorld(path);
 		entityManager.getPlayer().setX(spawnX * entityManager.getPlayer().getWidth());

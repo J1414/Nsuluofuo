@@ -15,7 +15,6 @@ public class EntityManager {
 	private Handler handler;
 	private Player player;
 	private Player2 player2;
-	private NPC npc;
 	private ArrayList<Entity> entities;
 	private Comparator<Entity> renderSorter = new Comparator<Entity>() {
 		public int compare(Entity a, Entity b) {
