@@ -2,8 +2,12 @@ package de.thcproductions.nsuluofuo.worlds;
 
 import java.awt.Color;
 import java.awt.Graphics;
+<<<<<<< HEAD
 import java.text.SimpleDateFormat;
 import java.util.Date;
+=======
+import java.util.Random;
+>>>>>>> branch 'master' of https://github.com/felixschwrz/Nsuluofuo.git
 
 import de.thcproductions.nsuluofuo.creatures.Malenica;
 import de.thcproductions.nsuluofuo.creatures.NPC;
@@ -29,10 +33,16 @@ public class World {
 	private Handler handler;
 	private EntityManager entityManager;
 	private Color daycolor;
+<<<<<<< HEAD
 	private Date currentDate = new Date();
 	private SimpleDateFormat sdf = new SimpleDateFormat("HH");
 	private String formattedDate = sdf.format(currentDate);
 	private int time = Integer.parseInt(formattedDate);
+=======
+	private Random random;
+	private int x,y;
+
+>>>>>>> branch 'master' of https://github.com/felixschwrz/Nsuluofuo.git
 	private ItemManager itemManager;
 
 	public void update() {
@@ -96,15 +106,27 @@ public class World {
 	}
 
 	public World(Handler handler, String path) {
+
 		this.handler = handler;
+<<<<<<< HEAD
 		if((time >= 17  &&  time <= 20) || (time >= 6 && time  <= 8)) {
 			daycolor = new Color(255,0,0,75);
 		}else if(time>= 20 || time<=6) {
+=======
+		if(System.currentTimeMillis() > 17*3600000 &&  System.currentTimeMillis()< 20*3600000) {
+			daycolor = new Color(255,0,0,100);
+		}else if(System.currentTimeMillis()> 20*3600000 || System.currentTimeMillis()<3600000) {
+>>>>>>> branch 'master' of https://github.com/felixschwrz/Nsuluofuo.git
 			daycolor = new Color(0,0,255,100);
+<<<<<<< HEAD
 		}else if(time>= 6 && time<=8) {
 			daycolor = new Color(255,0,140,100);
 		}else{
 			daycolor = new Color(0,0,0,0);
+=======
+		}else if((System.currentTimeMillis() > 6*3600000 && System.currentTimeMillis() < 8*3600000)) {
+			daycolor = new Color(255,0,140,75);
+>>>>>>> branch 'master' of https://github.com/felixschwrz/Nsuluofuo.git
 		}
 		entityManager = new EntityManager(handler, new Player(handler, spawnX, spawnY), new Player2(handler, spawnX2, spawnY2));
 		
@@ -120,8 +142,13 @@ public class World {
 		
 		//NPC's
 		
+<<<<<<< HEAD
 		entityManager.addEntity(new NPC(handler, 6, 3, "Pieles mit der Trivel", "Ich hasse dich, du dreckiger Hurensohn", "Du Spasst", "For Real... Realtalk jetzt", "Du geisteskranke Psychoschlampe", "Jo es ist Pieles mit der Trivel", "Wham Wham.. like Every beat, every line...", "Ab jetzt nicht mehr Lenzkirch, sondern Mechernich"));
 		entityManager.addEntity(new Malenica(handler, 4, 4,  "Konzept klar?", "Ihr mit eurem bekloppten Trivialismus","und eurer scheiï¿½ App", "Mir kommts so vor als wï¿½r das alles nur ein", "RIESIGER Witz fï¿½r euch", "Ich hasse dich nicht" , "Ich bin nur maï¿½los enttï¿½uscht von dir"));
+=======
+		entityManager.addEntity(new NPC(handler, 6, 3, "Pieles", "Ich hasse dich, du dreckiger Hurensohn", "Du Spasst", "For Real... Realtalk jetzt", "Du geisteskranke Psychoschlampe", "Jo es ist Pieles mit der Trivel", "Wham Wham.. like Every beat, every line...", "Ab jetzt nicht mehr Lenzkirch, sondern Mechernich"));
+		entityManager.addEntity(new Malenica(handler, 4, 4,  "Konzept klar?", "Ihr mit eurem bekloppten Trivialismus","und eurer scheiß App", "Mir kommts so vor als wär das alles nur ein", "RIESIGER Witz für euch", "Ich hasse dich nicht" , "Ich bin nur maßlos enttäuscht von dir"));
+>>>>>>> branch 'master' of https://github.com/felixschwrz/Nsuluofuo.git
 		
 		loadWorld(path);
 		entityManager.getPlayer().setX(spawnX * entityManager.getPlayer().getWidth());
