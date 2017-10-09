@@ -2,6 +2,7 @@ package de.thcproductions.nsuluofuo.worlds;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.Random;
 
 import de.thcproductions.nsuluofuo.creatures.Malenica;
 import de.thcproductions.nsuluofuo.creatures.NPC;
@@ -9,8 +10,6 @@ import de.thcproductions.nsuluofuo.creatures.Player;
 import de.thcproductions.nsuluofuo.creatures.Player2;
 import de.thcproductions.nsuluofuo.entities.EntityManager;
 import de.thcproductions.nsuluofuo.graphics.tiles.Tile;
-import de.thcproductions.nsuluofuo.inventory.Inventory;
-import de.thcproductions.nsuluofuo.inventory.PlayerInfo;
 import de.thcproductions.nsuluofuo.item.ItemManager;
 import de.thcproductions.nsuluofuo.main.Handler;
 import de.thcproductions.nsuluofuo.statics.Ganja;
@@ -28,6 +27,8 @@ public class World {
 	private Handler handler;
 	private EntityManager entityManager;
 	private Color daycolor;
+	private Random random;
+	private int x,y;
 
 	private ItemManager itemManager;
 
@@ -92,11 +93,14 @@ public class World {
 	}
 
 	public World(Handler handler, String path) {
+
 		this.handler = handler;
-		if(System.currentTimeMillis() > 17*3600000 &&  System.currentTimeMillis()< 20*3600000 || (System.currentTimeMillis() > 6*3600000 && System.currentTimeMillis() < 8*3600000)) {
+		if(System.currentTimeMillis() > 17*3600000 &&  System.currentTimeMillis()< 20*3600000) {
 			daycolor = new Color(255,0,0,100);
 		}else if(System.currentTimeMillis()> 20*3600000 || System.currentTimeMillis()<3600000) {
 			daycolor = new Color(0,0,255,100);
+		}else if((System.currentTimeMillis() > 6*3600000 && System.currentTimeMillis() < 8*3600000)) {
+			daycolor = new Color(255,0,140,75);
 		}
 		entityManager = new EntityManager(handler, new Player(handler, spawnX, spawnY), new Player2(handler, spawnX2, spawnY2));
 		
@@ -112,7 +116,7 @@ public class World {
 		
 		//NPC's
 		
-		entityManager.addEntity(new NPC(handler, 6, 3, "Pieles mit der Trivel", "Ich hasse dich, du dreckiger Hurensohn", "Du Spasst", "For Real... Realtalk jetzt", "Du geisteskranke Psychoschlampe", "Jo es ist Pieles mit der Trivel", "Wham Wham.. like Every beat, every line...", "Ab jetzt nicht mehr Lenzkirch, sondern Mechernich"));
+		entityManager.addEntity(new NPC(handler, 6, 3, "Pieles", "Ich hasse dich, du dreckiger Hurensohn", "Du Spasst", "For Real... Realtalk jetzt", "Du geisteskranke Psychoschlampe", "Jo es ist Pieles mit der Trivel", "Wham Wham.. like Every beat, every line...", "Ab jetzt nicht mehr Lenzkirch, sondern Mechernich"));
 		entityManager.addEntity(new Malenica(handler, 4, 4,  "Konzept klar?", "Ihr mit eurem bekloppten Trivialismus","und eurer scheiß App", "Mir kommts so vor als wär das alles nur ein", "RIESIGER Witz für euch", "Ich hasse dich nicht" , "Ich bin nur maßlos enttäuscht von dir"));
 		
 		loadWorld(path);
