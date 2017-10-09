@@ -2,6 +2,8 @@ package de.thcproductions.nsuluofuo.worlds;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import de.thcproductions.nsuluofuo.creatures.Malenica;
 import de.thcproductions.nsuluofuo.creatures.NPC;
@@ -9,13 +11,12 @@ import de.thcproductions.nsuluofuo.creatures.Player;
 import de.thcproductions.nsuluofuo.creatures.Player2;
 import de.thcproductions.nsuluofuo.entities.EntityManager;
 import de.thcproductions.nsuluofuo.graphics.tiles.Tile;
-import de.thcproductions.nsuluofuo.inventory.Inventory;
-import de.thcproductions.nsuluofuo.inventory.PlayerInfo;
 import de.thcproductions.nsuluofuo.item.ItemManager;
 import de.thcproductions.nsuluofuo.main.Handler;
 import de.thcproductions.nsuluofuo.statics.Ganja;
 import de.thcproductions.nsuluofuo.statics.Tree;
 import de.thcproductions.nsuluofuo.utils.Utils;
+
 
 public class World {
 
@@ -28,7 +29,10 @@ public class World {
 	private Handler handler;
 	private EntityManager entityManager;
 	private Color daycolor;
-
+	private Date currentDate = new Date();
+	private SimpleDateFormat sdf = new SimpleDateFormat("HH");
+	private String formattedDate = sdf.format(currentDate);
+	private int time = Integer.parseInt(formattedDate);
 	private ItemManager itemManager;
 
 	public void update() {
@@ -93,10 +97,14 @@ public class World {
 
 	public World(Handler handler, String path) {
 		this.handler = handler;
-		if(System.currentTimeMillis() > 17*3600000 &&  System.currentTimeMillis()< 20*3600000 || (System.currentTimeMillis() > 6*3600000 && System.currentTimeMillis() < 8*3600000)) {
-			daycolor = new Color(255,0,0,100);
-		}else if(System.currentTimeMillis()> 20*3600000 || System.currentTimeMillis()<3600000) {
+		if((time >= 17  &&  time <= 20) || (time >= 6 && time  <= 8)) {
+			daycolor = new Color(255,0,0,75);
+		}else if(time>= 20 || time<=6) {
 			daycolor = new Color(0,0,255,100);
+		}else if(time>= 6 && time<=8) {
+			daycolor = new Color(255,0,140,100);
+		}else{
+			daycolor = new Color(0,0,0,0);
 		}
 		entityManager = new EntityManager(handler, new Player(handler, spawnX, spawnY), new Player2(handler, spawnX2, spawnY2));
 		
@@ -113,7 +121,7 @@ public class World {
 		//NPC's
 		
 		entityManager.addEntity(new NPC(handler, 6, 3, "Pieles mit der Trivel", "Ich hasse dich, du dreckiger Hurensohn", "Du Spasst", "For Real... Realtalk jetzt", "Du geisteskranke Psychoschlampe", "Jo es ist Pieles mit der Trivel", "Wham Wham.. like Every beat, every line...", "Ab jetzt nicht mehr Lenzkirch, sondern Mechernich"));
-		entityManager.addEntity(new Malenica(handler, 4, 4,  "Konzept klar?", "Ihr mit eurem bekloppten Trivialismus","und eurer scheiß App", "Mir kommts so vor als wär das alles nur ein", "RIESIGER Witz für euch", "Ich hasse dich nicht" , "Ich bin nur maßlos enttäuscht von dir"));
+		entityManager.addEntity(new Malenica(handler, 4, 4,  "Konzept klar?", "Ihr mit eurem bekloppten Trivialismus","und eurer scheiï¿½ App", "Mir kommts so vor als wï¿½r das alles nur ein", "RIESIGER Witz fï¿½r euch", "Ich hasse dich nicht" , "Ich bin nur maï¿½los enttï¿½uscht von dir"));
 		
 		loadWorld(path);
 		entityManager.getPlayer().setX(spawnX * entityManager.getPlayer().getWidth());
