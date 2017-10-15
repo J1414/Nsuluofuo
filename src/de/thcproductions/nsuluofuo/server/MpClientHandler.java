@@ -1,17 +1,19 @@
 package de.thcproductions.nsuluofuo.server;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.PrintWriter;
+
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.Socket;
+
+import de.thcproductions.nsuluofuo.multiplayer.MpCharacter;
 
 public class MpClientHandler implements Runnable{
 	
 	private Socket clientsoc;
-	private static String characters = "";
+	private static double[] characterPosx = {0, 0};
+	private static double[] characterPosy = {0, 0};
+	private static int[] characterDir = {0, 0};
+	private static String[] characterName = {"-", "-"};
 	private static int index = 0;
 	
 	public MpClientHandler(Socket pclientsoc) {
@@ -20,44 +22,51 @@ public class MpClientHandler implements Runnable{
 
 	@Override
 	public void run() {
-		
-		index ++;
-		final int thisIndex = index;
-		
-		try {
+		try{
 
-			OutputStream out = clientsoc.getOutputStream();
-			PrintWriter writer = new PrintWriter(out);
-
-			InputStream in = clientsoc.getInputStream();
-			BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-			
-			characters = characters +"(" + thisIndex +  "<<0:0><1:0><2:0><3:->>" +  thisIndex + ")";
-
-			while(true){
-			
-				String s = null;
-	
-				while ((s = reader.readLine()) != null) {
-					
-					String cpt1 = characters.substring(0, characters.indexOf("(" + thisIndex) + 2);
-					String cpt2 = characters.substring(characters.indexOf(thisIndex + ")"), characters.length());
-					
-					characters = cpt1 + s + cpt2;
-					
-					s = null;
-					
-					writer.write("["+ thisIndex + "]" + characters + "\n");
-					writer.flush();
-	
-				}
-			
+			index ++;
+			final int thisIndex = index - 1;
+			int oIndex = 0;
+			switch (thisIndex){
+				case 0: oIndex = 1;
+				case 1: oIndex = 0;
 			}
+			final int foIndex = oIndex;
 
-		} catch (IOException e) {
+			Thread trrecive = new Thread(){public void run(){
+				try {
+					
+					ObjectInputStream in = new ObjectInputStream(clientsoc.getInputStream());
+					
+					MpCharacter tmp = (MpCharacter)in.readObject();
+					characterPosx[thisIndex] = tmp.getPositionX();
+					characterPosy[thisIndex] = tmp.getPositionY();
+					characterDir[thisIndex] = tmp.getDir();
+					characterName[thisIndex] = tmp.getName();
+					
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}};
+			Thread trsend = new Thread(){public void run(){
+				try {
+					
+					ObjectOutputStream out = new ObjectOutputStream(clientsoc.getOutputStream());;
+					
+					MpCharacter tmp = new MpCharacter(characterPosx[foIndex], characterPosy[foIndex], characterDir[foIndex], characterName[foIndex]);
+					out.writeObject(tmp);
+					out.flush();
+					
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}};
+			
+			trrecive.start();
+			trsend.start();
+		
+		} catch(Exception e){
 			e.printStackTrace();
 		}
-		
 	}
-
 }

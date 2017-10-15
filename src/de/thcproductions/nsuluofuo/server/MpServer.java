@@ -1,5 +1,6 @@
 package de.thcproductions.nsuluofuo.server;
 
+
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -7,6 +8,7 @@ public class MpServer {
 	private ServerSocket serversoc;
 	private int port;
 	private boolean on;
+	private int clntCount = 0;
 	
 	public MpServer(int pport){
 		port = pport;
@@ -21,12 +23,14 @@ public class MpServer {
 			
 			Thread tron = new Thread(){
 				public void run(){
-					while(on){
+					while(on && clntCount < 2){
 						
 						try {
 							
 							Socket clientsoc;
 							clientsoc = serversoc.accept();
+							
+							clntCount ++;
 							
 							Thread tr = new Thread(new MpClientHandler(clientsoc));
 							tr.start();
