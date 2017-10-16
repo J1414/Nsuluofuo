@@ -1,6 +1,13 @@
 package de.thcproductions.nsuluofuo.multiplayer;
 
-public class MpCharacter {
+import java.io.Serializable;
+
+public class MpCharacter implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2608720197915917032L;
+	
 	private double positionX;
 	private double positionY;
 	private int dir;
@@ -60,6 +67,4 @@ public class MpCharacter {
 	public void setDir(int pdir) {
 		this.dir = pdir;
 	}
-	
-	
 }

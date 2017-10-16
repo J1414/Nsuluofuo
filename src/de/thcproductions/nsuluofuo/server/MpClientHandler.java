@@ -44,6 +44,9 @@ public class MpClientHandler implements Runnable{
 					characterDir[thisIndex] = tmp.getDir();
 					characterName[thisIndex] = tmp.getName();
 					
+					this.sleep(100);
+					run();
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -56,6 +59,9 @@ public class MpClientHandler implements Runnable{
 					MpCharacter tmp = new MpCharacter(characterPosx[foIndex], characterPosy[foIndex], characterDir[foIndex], characterName[foIndex]);
 					out.writeObject(tmp);
 					out.flush();
+					
+					this.sleep(100);
+					run();
 					
 				} catch (Exception e) {
 					e.printStackTrace();
