@@ -6,8 +6,8 @@ public class SimpleDualPlayer {
 	
 	private static MpServer server;
 	private static MpConnection connection;
-	private static MpCharacter playerL;
-	private static MpCharacter playerR;
+	private static MpCharacter playerL = new MpCharacter(0, 0, 0, "Player");
+	private static MpCharacter playerR = new MpCharacter(0, 0, 0, "Player");
 	
 	private static int port;
 
@@ -20,12 +20,12 @@ public class SimpleDualPlayer {
 		server.stop();
 	}
 	public static void join(String phost, int pport){
-		playerL = new MpCharacter(0, 0, 0, "Player");
+		//playerL = new MpCharacter(0, 0, 0, "Player");
 		connection = new MpConnection(phost, pport, playerL);
 		connection.start();
 	}
 	public static void join(){
-		playerL = new MpCharacter(0, 0, 0, "Player");
+		//playerL = new MpCharacter(0, 0, 0, "Player");
 		connection = new MpConnection("localhost", port, playerL);
 		connection.start();
 	}
@@ -33,33 +33,27 @@ public class SimpleDualPlayer {
 		connection.stop();
 	}
 	public static void update(){
+		connection.setLocalPlayer(playerL);
 		connection.update();
+		playerR = connection.getCharacter(1);
 	}
 	
-	/*public static boolean isReady(){
-		connection.update();
-		if(connection.getCharacterList().size() > 1){
-			return true;
-		}
-		else {
-			return false;
-		}
-	}
 	
 	public static MpCharacter getPlayerL() {
-		connection.update();
 		return playerL;
 	}
+	public static void setPlayerL(MpCharacter playerL) {
+		SimpleDualPlayer.playerL = playerL;
+	}
 	public static MpCharacter getPlayerR() {
-		connection.update();
-		if(connection.getLocalPlayer().getId() == 0){
-			playerR = connection.getCharacter(1);
-		}
-		else if(connection.getLocalPlayer().getId() == 1){
-			playerR = connection.getCharacter(0);
-		}
 		return playerR;
-	}*/
+	}
+	public static void setPlayerR(MpCharacter playerR) {
+		SimpleDualPlayer.playerR = playerR;
+	}
+	
+
+
 }
 
 				

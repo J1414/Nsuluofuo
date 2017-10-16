@@ -19,6 +19,7 @@ public class MpConnection {
 	private static int[] characterDir = {0, 0};
 	private static String[] characterName = {"-", "-"};
 	
+	private MpCharacter localPlayer = new MpCharacter(0, 0, 0, "-");
 	private boolean updatevar = false;
 	
 	public MpConnection(String phost, int pport, MpCharacter plocalPlayer){
@@ -41,6 +42,8 @@ public class MpConnection {
 			in = soc.getInputStream();
 			out = soc.getOutputStream();
 			
+			update2();
+			
 			System.out.println("Client: Connected to server");
 			
 		}  catch (Exception e) {
@@ -61,7 +64,10 @@ public class MpConnection {
 
 	public void update(){
 	
-		update2();
+		characterPosx[0] = localPlayer.getPositionX();
+		characterPosy[0] = localPlayer.getPositionY();
+		characterDir[0] = localPlayer.getDir();
+		characterName[0] = localPlayer.getName();
 	}
 	
 	private void update2(){
@@ -106,4 +112,19 @@ public class MpConnection {
 		trrecive.start();
 		trsend.start();
 	}
+	
+	
+	
+	public static MpCharacter getCharacter(int index) {
+		return new MpCharacter(characterPosx[index], characterPosy[index], characterDir[index], characterName[index]);
+	}
+
+	public MpCharacter getLocalPlayer() {
+		return localPlayer;
+	}
+
+	public void setLocalPlayer(MpCharacter localPlayer) {
+		this.localPlayer = localPlayer;
+	}
+	
 }
