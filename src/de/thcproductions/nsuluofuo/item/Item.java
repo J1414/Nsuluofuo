@@ -24,7 +24,7 @@ public class Item {
 	private int attack;
 	private int x, y, count;
 	protected boolean pickedUp = false;
-
+	
 	public Item(BufferedImage texture, String name, int prize, int strength, int attack, int id) {
 		this.texture = texture;
 		this.prize = prize;

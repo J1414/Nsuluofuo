@@ -11,10 +11,13 @@ import de.thcproductions.nsuluofuo.creatures.Player;
 import de.thcproductions.nsuluofuo.creatures.Player2;
 import de.thcproductions.nsuluofuo.entities.EntityManager;
 import de.thcproductions.nsuluofuo.graphics.tiles.Tile;
+import de.thcproductions.nsuluofuo.item.Item;
 import de.thcproductions.nsuluofuo.item.ItemManager;
+import de.thcproductions.nsuluofuo.item.Trivel;
 import de.thcproductions.nsuluofuo.main.Handler;
 import de.thcproductions.nsuluofuo.statics.Ganja;
 import de.thcproductions.nsuluofuo.statics.Tree;
+import de.thcproductions.nsuluofuo.story.QuestManager;
 import de.thcproductions.nsuluofuo.utils.Utils;
 
 
@@ -26,8 +29,10 @@ public class World {
 	private String name, name2;
 	private int health, health2;
 	private int[][] tiles;
+	private Item trivel;
 	private Handler handler;
 	private EntityManager entityManager;
+	private QuestManager questManager;
 	private Color daycolor;
 	private Date currentDate = new Date();
 	private SimpleDateFormat sdf = new SimpleDateFormat("HH");
@@ -37,6 +42,7 @@ public class World {
 
 	public void update() {
 		entityManager.update();
+		questManager.update();
 		itemManager.update();
 	}
 
@@ -58,6 +64,7 @@ public class World {
 		itemManager.render(g);
 		
 		entityManager.render(g);
+		questManager.render(g);
 		g.setColor(daycolor);
 		g.fillRect(0, 0, 640, 480);
 	}
@@ -107,12 +114,15 @@ public class World {
 			daycolor = new Color(0,0,0,0);
 		}
 		entityManager = new EntityManager(handler, new Player(handler, spawnX, spawnY), new Player2(handler, spawnX2, spawnY2));
+		questManager = new QuestManager(handler);
 		
 		itemManager = new ItemManager(handler);
+		trivel = new Trivel();
 		
 		/* Statics */
 		
 		drawTrees();
+		itemManager.addItem(trivel);
 		
 		//Mobs
 		
@@ -123,6 +133,7 @@ public class World {
 		entityManager.addEntity(new NPC(handler, 6, 3, "Pieles mit der Trivel", "Ich hasse dich, du dreckiger Hurensohn", "Du Spasst", "For Real... Realtalk jetzt", "Du geisteskranke Psychoschlampe", "Jo es ist Pieles mit der Trivel", "Wham Wham.. like Every beat, every line...", "Ab jetzt nicht mehr Lenzkirch, sondern Mechernich"));
 		entityManager.addEntity(new Malenica(handler, 4, 4,  "Konzept klar?", "Ihr mit eurem bekloppten Trivialismus","und eurer schei� App", "Mir kommts so vor als w�r das alles nur ein", "RIESIGER Witz f�r euch", "Ich hasse dich nicht" , "Ich bin nur ma�los entt�uscht von dir"));
 		
+		
 		loadWorld(path);
 		entityManager.getPlayer().setX(spawnX * entityManager.getPlayer().getWidth());
 		entityManager.getPlayer().setY(spawnY * entityManager.getPlayer().getWidth());
@@ -131,6 +142,8 @@ public class World {
 		entityManager.getPlayer2().setY(spawnY2 * entityManager.getPlayer2().getWidth());
 		
 		System.out.println("Player1: " + name + " > "  + health  + "\nPlayer2: " + name2 + " > " + health2);
+		
+		
 		
 	}
 	
@@ -144,7 +157,7 @@ public class World {
 		entityManager.addEntity(new Ganja(handler, 11,3, width, height));
 		entityManager.addEntity(new Ganja(handler, 11,13, width, height));
 		
-		for(int x = 15; x<25; x++) {
+		for(int x = 15; x<5; x++) {
 			for(int y = 1; y < 10; y++) {
 				entityManager.addEntity(new Ganja(handler,5+x,5+y,width,height));
 			}
@@ -175,7 +188,7 @@ public class World {
 
 	public ItemManager getItemManager() {
 		return itemManager;
-	}
+	} 
 
 	public void setHandler(Handler handler) {
 		this.handler = handler;
