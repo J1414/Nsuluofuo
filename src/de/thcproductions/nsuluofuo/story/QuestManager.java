@@ -18,10 +18,12 @@ public class QuestManager {
 	}
 	
 	public void update(){
+		trivel.update();
 		for(int current = currentQuest; current < quests.size(); current++){
 			if(quests.get(current).isDone()){
 				quests.get(current++).setActive(true);
 				quests.get(current).update();
+				
 				setCurrentQuest(current);
 			}
 	

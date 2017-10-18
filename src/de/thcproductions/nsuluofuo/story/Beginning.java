@@ -21,11 +21,11 @@ public class Beginning extends Quest{
 	}
 	
 	public void update(){
-		for(int i = 0; i < handler.getWorld().getEntityManager().getPlayer().getInventory().getInventoryItems().size(); i++){
-			if(handler.getWorld().getEntityManager().getPlayer().getInventory().getInventoryItems().get(i).equals(trivel)){
+		
+			if(handler.getWorld().getEntityManager().getPlayer().getInventory().getInventoryItems().contains(trivel)){
 				System.out.println("Hurensohn");
 			}
-		}
+		
 		
 	}
 	
