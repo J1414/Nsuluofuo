@@ -18,16 +18,16 @@ public abstract class Creature extends Entity {
 
 	public void moveX() {
 		if (xMove > 0) {
-			int tx = (int) (getX() - xMove + bounds.x + bounds.width) / Tile.TILEWIDTH;
+			int tx = (int) ((getX() - xMove + bounds.x + bounds.width) / Tile.TILEWIDTH);
 
-			if (!collisionWithTile(tx, (int) (getY() + bounds.y) / Tile.TILEHEIGHT)
-					&& !collisionWithTile(tx, (int) (getY() + bounds.y + bounds.height) / Tile.TILEHEIGHT)) {
+			if (!collisionWithTile(tx, (int) ((getY() + bounds.y) / Tile.TILEHEIGHT))
+					&& !collisionWithTile(tx, (int) ((getY() + bounds.y + bounds.height) / Tile.TILEHEIGHT))) {
 				setX(getX() + getxMove());
 			}
 		} else if (xMove < 0) {
-			int tx = (int) (getX() + xMove + bounds.x) / Tile.TILEWIDTH;
+			int tx = (int) ((getX() + xMove + bounds.x) / Tile.TILEWIDTH);
 
-			if (!collisionWithTile(tx, (int) (getY() + bounds.y) / Tile.TILEHEIGHT)
+			if (!collisionWithTile(tx, (int) ((getY() + bounds.y) / Tile.TILEHEIGHT))
 					&& !collisionWithTile(tx, (int) (getY() + bounds.y + bounds.height) / Tile.TILEHEIGHT)) {
 				setX(getX() + getxMove());
 			}
@@ -38,15 +38,15 @@ public abstract class Creature extends Entity {
 		if (yMove < 0) {
 			int ty = (int) (getY() + yMove + bounds.y) / Tile.TILEHEIGHT;
 
-			if (!collisionWithTile((int) (getX() + bounds.x) / Tile.TILEWIDTH, ty)
+			if (!collisionWithTile((int) ((getX() + bounds.x) / Tile.TILEWIDTH), ty)
 					&& !collisionWithTile((int) (getX() + bounds.x + bounds.width) / Tile.TILEWIDTH, ty)) {
 				setY(getY() + getyMove());
 			}
 		} else if (yMove > 0) {
-			int ty = (int) (getY() + yMove + bounds.y + bounds.height) / Tile.TILEHEIGHT;
+			int ty = ((int) (getY() + yMove + bounds.y + bounds.height)) / Tile.TILEHEIGHT;
 
-			if (!collisionWithTile((int) (getX() + bounds.x) / Tile.TILEWIDTH, ty)
-					&& !collisionWithTile((int) (getX() + bounds.x + bounds.width) / Tile.TILEWIDTH, ty)) {
+			if (!collisionWithTile((int) ((getX() + bounds.x) / Tile.TILEWIDTH), ty)
+					&& !collisionWithTile((int) ((getX() + bounds.x + bounds.width) / Tile.TILEWIDTH), ty)) {
 				setY(getY() + getyMove());
 			}
 
