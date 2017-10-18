@@ -62,7 +62,7 @@ public class PlayerInfo {
 		}
 		g.setColor(color);
 		g.fillRoundRect(20, 20, handler.getGame().getWidth() - 40, handler.getGame().getHeight() - 40, 40, 40);
-		Text.drawString(g, "PlayerInfo", 320, 240, true, Color.GREEN, Assets.smallText);
+		Text.drawString(g, handler.getWorld().getName(), 485, 40, true, Color.BLACK, Assets.text);
 		
 		g.setColor(Color.BLACK);
 		g.fillRect(304, 466, 8, 8);
@@ -77,6 +77,15 @@ public class PlayerInfo {
 		g.fillRect(317, 467, 6, 6);
 		g.setColor(Color.WHITE);
 		g.fillRect(329, 467, 6, 6);
+		g.setColor(Color.BLACK);
+		g.fillRect(39, 49, 252, 252);
+		g.setColor(Color.GREEN);
+		g.fillRect(40, 50, 250, 250);
+		g.setColor(Color.BLACK);
+		g.fillRect((int)((handler.getWorld().getEntityManager().getPlayer().getX() + handler.getGameCamera().getxOffset())/128 + 39), (int) ((handler.getWorld().getEntityManager().getPlayer().getY() + handler.getGameCamera().getyOffset())/128 + 49), 6, 6);
+		g.setColor(Color.WHITE);
+		g.fillRect((int)((handler.getWorld().getEntityManager().getPlayer().getX() + handler.getGameCamera().getxOffset())/128 + 40), (int) ((handler.getWorld().getEntityManager().getPlayer().getY() + handler.getGameCamera().getyOffset())/128 + 50), 4, 4);
+		Text.drawString(g, "map", 40, 35, false, Color.BLACK, Assets.smallText);
 		
 		
 	}

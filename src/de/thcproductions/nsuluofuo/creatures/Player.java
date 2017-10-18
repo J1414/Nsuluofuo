@@ -27,7 +27,6 @@ public class Player extends Creature {
 	private int level;
 	private int maxExp;
 	private Item currentWeapon;
-	private String name = "Kirito";
 	private Inventory inventory;
 	private PlayerInfo info;
 	private Trivel trivel;
@@ -38,7 +37,7 @@ public class Player extends Creature {
 		info = new PlayerInfo(handler);
 		inventory = new Inventory(handler);
 		trivel = new Trivel(handler);
-
+		
 		currentWeapon = new Item(null, null, 0, 0, 5, 0);
 		bounds.x = 0;
 		bounds.y = 0;
