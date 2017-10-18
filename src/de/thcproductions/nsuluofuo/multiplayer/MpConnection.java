@@ -1,10 +1,13 @@
 package de.thcproductions.nsuluofuo.multiplayer;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.net.Socket;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class MpConnection {
 	private Socket soc;
@@ -70,22 +73,40 @@ public class MpConnection {
 		characterName[0] = localPlayer.getName();
 	}
 	
-	private void update2(){
+	public void update2(){
 		
 		Thread trrecive = new Thread(){public void run(){
 			try {
 				
 				ObjectInputStream in = new ObjectInputStream(soc.getInputStream());
 				
-				System.out.println("jarec");
-				MpCharacter tmp = (MpCharacter)in.readObject();
-				characterPosx[1] = tmp.getPositionX();
-				characterPosy[1] = tmp.getPositionY();
-				characterDir[1] = tmp.getDir();
-				characterName[1] = tmp.getName();
 				
-				this.sleep(100);
-				run();
+				
+				Timer timer = new Timer();
+				TimerTask task = new TimerTask() {
+					
+					@Override
+					public void run() {
+
+						try {
+							MpCharacter tmp = (MpCharacter)in.readObject();
+							characterPosx[1] = tmp.getPositionX();
+							characterPosy[1] = tmp.getPositionY();
+							characterDir[1] = tmp.getDir();
+							characterName[1] = tmp.getName();
+						} catch (Exception e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						
+						
+					}
+				};
+				timer.scheduleAtFixedRate(task, 100, 100);
+				
+				//this.sleep(100);
+				//run();
+				
 				
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -96,13 +117,30 @@ public class MpConnection {
 				
 				ObjectOutputStream out = new ObjectOutputStream(soc.getOutputStream());;
 				
-				System.out.println("jasend");
-				MpCharacter tmp = new MpCharacter(characterPosx[0], characterPosy[0], characterDir[0], characterName[0]);
-				out.writeObject(tmp);
-				out.flush();
 				
-				this.sleep(100);
-				run();
+
+				Timer timer = new Timer();
+				TimerTask task = new TimerTask() {
+					
+					@Override
+					public void run() {
+
+						try {
+							MpCharacter tmp = new MpCharacter(characterPosx[0], characterPosy[0], characterDir[0], characterName[0]);
+							out.writeObject(tmp);
+							out.flush();
+						} catch (Exception e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						
+						
+					}
+				};
+				timer.scheduleAtFixedRate(task, 100, 100);
+				
+				//this.sleep(100);
+				//run();
 				
 			} catch (Exception e) {
 				e.printStackTrace();

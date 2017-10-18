@@ -7,6 +7,7 @@ import java.awt.image.BufferedImage;
 import de.thcproductions.nsuluofuo.graphics.Animation;
 import de.thcproductions.nsuluofuo.graphics.Assets;
 import de.thcproductions.nsuluofuo.main.Handler;
+import de.thcproductions.nsuluofuo.multiplayer.SimpleDualPlayer;
 
 public class Player2 extends Creature {
 	private BufferedImage currentPosition = Assets.playerDown;
@@ -20,10 +21,17 @@ public class Player2 extends Creature {
 		animLeft = new Animation(animLeft.DEFAULT_SPEED, Assets.player_left);
 		animRight = new Animation(animRight.DEFAULT_SPEED, Assets.player_right);
 
-		bounds.x = 8;
-		bounds.y = 16;
-		bounds.width = 16;
-		bounds.height = 16;
+		//collisionbox vorübergehend auf null gemacht
+		
+//		bounds.x = 8;
+//		bounds.y = 16;
+//		bounds.width = 16;
+//		bounds.height = 16;
+		
+		bounds.x = 0;
+		bounds.y = 0;
+		bounds.width = 0;
+		bounds.height = 0;
 
 	}
 
@@ -37,6 +45,10 @@ public class Player2 extends Creature {
 
 		getInput();
 		move();
+		
+		//Positionsdaten von Multiplayerklassen holen
+		setX((float)SimpleDualPlayer.getPlayerR().getPositionX());
+		setY((float)SimpleDualPlayer.getPlayerR().getPositionY());
 
 	}
 

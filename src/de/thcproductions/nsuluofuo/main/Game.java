@@ -13,6 +13,7 @@ import de.thcproductions.nsuluofuo.modes.GameMode;
 import de.thcproductions.nsuluofuo.modes.MenuMode;
 import de.thcproductions.nsuluofuo.modes.Mode;
 import de.thcproductions.nsuluofuo.modes.SettingsMode;
+import de.thcproductions.nsuluofuo.multiplayer.SimpleDualPlayer;
 
 public class Game implements Runnable {
 
@@ -80,6 +81,9 @@ public class Game implements Runnable {
 		if (Mode.getMode() != null) {
 			Mode.getMode().update();
 		}
+		
+		// Vorübergehende Methode zum Dualplayer-Daten überall verteilen
+		SimpleDualPlayer.update();
 	}
 
 	private void render() {

@@ -14,6 +14,7 @@ import de.thcproductions.nsuluofuo.inventory.PlayerInfo;
 import de.thcproductions.nsuluofuo.inventory.Trivel;
 import de.thcproductions.nsuluofuo.item.Item;
 import de.thcproductions.nsuluofuo.main.Handler;
+import de.thcproductions.nsuluofuo.multiplayer.SimpleDualPlayer;
 
 public class Player extends Creature {
 
@@ -75,6 +76,10 @@ public class Player extends Creature {
 		info.update();
 		inventory.update();
 		trivel.update();
+		
+		//Positionsdaten den Multiplayerklassen geben
+		SimpleDualPlayer.getPlayerL().setPositionX(getX());
+		SimpleDualPlayer.getPlayerL().setPositionY(getY());
 
 	}
 
