@@ -34,8 +34,10 @@ public class SimpleDualPlayer {
 	}
 	public static void update(){
 		connection.setLocalPlayer(playerL);
+		//connection.getLocalPlayer().setPositionX(playerL.getPositionX());
+		//connection.getLocalPlayer().setPositionY(playerL.getPositionY());
 		connection.update();
-		playerR = connection.getCharacter(1);
+		playerR = MpConnection.getCharacter(1);
 	}
 	
 	
