@@ -26,6 +26,7 @@ public class Player extends Creature {
 	private int exp;
 	private int level;
 	private int maxExp;
+	private String name;
 	private Item currentWeapon;
 	private Inventory inventory;
 	private PlayerInfo info;
@@ -79,6 +80,7 @@ public class Player extends Creature {
 		//Positionsdaten den Multiplayerklassen geben
 		SimpleDualPlayer.getPlayerL().setPositionX(getX());
 		SimpleDualPlayer.getPlayerL().setPositionY(getY());
+		SimpleDualPlayer.getPlayerL().setName(getName());
 
 	}
 
@@ -232,7 +234,7 @@ public class Player extends Creature {
 	public void setMoney(int money) {
 		this.money = money;
 	}
-
+	
 	public String getName() {
 		return name;
 	}
@@ -240,7 +242,7 @@ public class Player extends Creature {
 	public void setName(String name) {
 		this.name = name;
 	}
-
+ 	
 	public PlayerInfo getInfo() {
 		return info;
 	}

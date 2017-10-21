@@ -53,32 +53,34 @@ public class Player2 extends Creature {
 		//System.out.println("x ist: " + getX() + " x soll: " + remoteX + " differenz: " + Math.abs(getX() - remoteX) + " mehr als default speed: " + (boolean)(Math.abs(getY() - remoteY) > DEFAULT_SPEED));
 		//System.out.println("y ist: " + getY() + " y soll: " + remoteY + " differenz " + Math.abs(getY() - remoteY) + " mehr als default speed: " + (boolean)(Math.abs(getY() - remoteY) > DEFAULT_SPEED));
         
-		if(Math.abs(getY() - remoteY) > DEFAULT_SPEED){
+		if(Math.abs(getY() - remoteY) > DEFAULT_SPEED*2){
 			
 			if (getY() > remoteY) {
-				setyMove(- getSpeed());
+				setyMove(- getSpeed()*2);
+				currentPosition = animUp.getCurrentFrame();
 			}
 			if (getY() < remoteY) {
-				setyMove(+ getSpeed());
+				setyMove(+ getSpeed()*2);
+				currentPosition = animDown.getCurrentFrame();
 			}
 		}
 		else{
 			setY(remoteY);
 		}
-		if(Math.abs(getX() - remoteX) > DEFAULT_SPEED){
+		if(Math.abs(getX() - remoteX) > DEFAULT_SPEED*2){
 			
 			if (getX() > remoteX) {
-				setxMove(- getSpeed());
+				setxMove(- getSpeed()*2);
+				currentPosition = animLeft.getCurrentFrame();
 			}
 			if (getX() < remoteX) {
-				setxMove(+ getSpeed());
+				setxMove(+ getSpeed()*2);
+				currentPosition = animRight.getCurrentFrame();
 			}
 		}
 		else{
 			setX(remoteX);
 		}
-		
-		
 		
 
 	}
