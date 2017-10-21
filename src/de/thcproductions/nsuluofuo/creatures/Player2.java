@@ -43,12 +43,43 @@ public class Player2 extends Creature {
 		animLeft.update();
 		animRight.update();
 
-		getInput();
+		//getInput();
 		move();
 		
 		//Positionsdaten von Multiplayerklassen holen
-		setX((float)SimpleDualPlayer.getPlayerR().getPositionX());
-		setY((float)SimpleDualPlayer.getPlayerR().getPositionY());
+		float remoteX = ((float)SimpleDualPlayer.getPlayerR().getPositionX());
+		float remoteY = ((float)SimpleDualPlayer.getPlayerR().getPositionY());
+		
+		//System.out.println("x ist: " + getX() + " x soll: " + remoteX + " differenz: " + Math.abs(getX() - remoteX) + " mehr als default speed: " + (boolean)(Math.abs(getY() - remoteY) > DEFAULT_SPEED));
+		//System.out.println("y ist: " + getY() + " y soll: " + remoteY + " differenz " + Math.abs(getY() - remoteY) + " mehr als default speed: " + (boolean)(Math.abs(getY() - remoteY) > DEFAULT_SPEED));
+        
+		if(Math.abs(getY() - remoteY) > DEFAULT_SPEED){
+			
+			if (getY() > remoteY) {
+				setyMove(- getSpeed());
+			}
+			if (getY() < remoteY) {
+				setyMove(+ getSpeed());
+			}
+		}
+		else{
+			setY(remoteY);
+		}
+		if(Math.abs(getX() - remoteX) > DEFAULT_SPEED){
+			
+			if (getX() > remoteX) {
+				setxMove(- getSpeed());
+			}
+			if (getX() < remoteX) {
+				setxMove(+ getSpeed());
+			}
+		}
+		else{
+			setX(remoteX);
+		}
+		
+		
+		
 
 	}
 

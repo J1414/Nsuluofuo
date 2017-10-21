@@ -102,7 +102,7 @@ public class MpConnection {
 						
 					}
 				};
-				timer.scheduleAtFixedRate(task, 100, 100);
+				timer.scheduleAtFixedRate(task, 50, 50);
 				
 				//this.sleep(100);
 				//run();
@@ -137,7 +137,7 @@ public class MpConnection {
 						
 					}
 				};
-				timer.scheduleAtFixedRate(task, 100, 100);
+				timer.scheduleAtFixedRate(task, 50, 50);
 				
 				//this.sleep(100);
 				//run();
