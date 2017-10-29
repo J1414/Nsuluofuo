@@ -4,7 +4,10 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 
+import de.thcproductions.nsuluofuo.graphics.Assets;
+import de.thcproductions.nsuluofuo.graphics.Text;
 import de.thcproductions.nsuluofuo.main.Handler;
+import de.thcproductions.nsuluofuo.story.QuestManager;
 
 public class Trivel {
 	
@@ -12,10 +15,12 @@ public class Trivel {
 	private Graphics g;
 	private boolean active;
 	private Color trivel;
+	private QuestManager qm;
 	
 	public Trivel(Handler handler){
 		this.handler = handler;
 		trivel = new Color(245,245,220);
+		qm = new QuestManager(handler);
 	}
 	
 	public void update(){
@@ -60,6 +65,7 @@ public class Trivel {
 		g.fillRect(317, 467, 6, 6);
 		g.setColor(Color.WHITE);
 		g.fillRect(329, 467, 6, 6);
+		Text.drawString(g, " " + qm.getCurrentQuest(), 50, 50, false, Color.BLACK, Assets.smallText);
 		
 		
 	}

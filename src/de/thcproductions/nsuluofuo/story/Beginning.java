@@ -22,8 +22,9 @@ public class Beginning extends Quest{
 	
 	public void update(){
 		
-			if(handler.getWorld().getEntityManager().getPlayer().getInventory().getInventoryItems().contains(trivel)){
-				System.out.println("Hurensohn");
+			if(handler.getWorld().getEntityManager().getPlayer().getX() > 200 && handler.getWorld().getEntityManager().getPlayer().getX() > 200){
+				setActive(false);
+				setDone(true);
 			}
 		
 		
