@@ -34,7 +34,9 @@ public class Ganja extends StaticEntity{
 
 	@Override
 	public void update() {
-		// TODO Auto-generated method stub
+		if(getHealth() < 10000){
+			setHealth(10000);
+		}
 		
 	}
 
