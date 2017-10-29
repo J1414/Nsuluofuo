@@ -73,7 +73,9 @@ public class Game implements Runnable {
 		settingsMode = new SettingsMode(handler);
 		
 		Mode.setMode(menuMode);
-
+		
+		//Server beitreten
+		SimpleDualPlayer.join("nsuluofuo.schwarzf.de", 1442);
 	}
 
 	private void update() {
