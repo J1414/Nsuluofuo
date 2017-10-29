@@ -40,10 +40,10 @@ public class Player extends Creature {
 		trivel = new Trivel(handler);
 		
 		currentWeapon = new Item(null, null, 0, 0, 5, 0);
-		bounds.x = 0;
-		bounds.y = 0;
-		bounds.width = 32;
-		bounds.height = 32;
+		bounds.x = 8;
+		bounds.y = 16;
+		bounds.width = 16;
+		bounds.height = 16;
 
 		animDown = new Animation(animDown.DEFAULT_SPEED, Assets.player_down);
 		animUp = new Animation(animUp.DEFAULT_SPEED, Assets.player_up);
