@@ -7,7 +7,7 @@ public class WaterTile extends Tile {
 	
 
 	public WaterTile(int id) {
-		super(Assets.watera[0], id);
+		super(Assets.watera[0], id,32,32);
 		
 	}
 	

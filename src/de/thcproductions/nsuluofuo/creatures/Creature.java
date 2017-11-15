@@ -18,7 +18,7 @@ public abstract class Creature extends Entity {
 
 	public void moveX() {
 		if (xMove > 0) {
-			int tx = (int) ((getX() - xMove + bounds.x + bounds.width) / Tile.TILEWIDTH);
+			int tx = (int) ((getX() + xMove + bounds.x + bounds.width) / Tile.TILEWIDTH);
 
 			if (!collisionWithTile(tx, (int) ((getY() + bounds.y) / Tile.TILEHEIGHT))
 					&& !collisionWithTile(tx, (int) ((getY() + bounds.y + bounds.height) / Tile.TILEHEIGHT))) {
@@ -54,6 +54,7 @@ public abstract class Creature extends Entity {
 	}
 
 	private boolean collisionWithTile(int x, int y) {
+		//return handler.getWorld().getEntityManager().getPlayer().getCollisionBounds(0f, 0f).intersects(handler.getWorld().getTile(x,y).getBounds());
 		return handler.getWorld().getTile(x, y).isSolid();
 	}
 

@@ -5,7 +5,7 @@ import de.thcproductions.nsuluofuo.graphics.Assets;
 public class PathTile extends Tile {
 
 	public PathTile(int id) {
-		super(Assets.path, id);
+		super(Assets.path, id,32,32);
 
 	}
 

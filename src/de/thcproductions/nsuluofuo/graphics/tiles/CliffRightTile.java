@@ -5,7 +5,7 @@ import de.thcproductions.nsuluofuo.graphics.Assets;
 public class CliffRightTile extends Tile{
 
 	public CliffRightTile(int id) {
-		super(Assets.cliffRight, id);
+		super(Assets.cliffRight, id,32,32);
 		
 	}
 	

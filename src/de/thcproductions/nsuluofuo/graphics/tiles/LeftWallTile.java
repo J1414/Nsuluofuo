@@ -5,7 +5,7 @@ import de.thcproductions.nsuluofuo.graphics.Assets;
 public class LeftWallTile extends Tile {
 
 	public LeftWallTile(int id) {
-		super(Assets.leftWall, id);
+		super(Assets.leftWall, id,32,32);
 
 	}
 

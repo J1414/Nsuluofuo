@@ -1,12 +1,14 @@
 package de.thcproductions.nsuluofuo.graphics.tiles;
 
 import java.awt.Graphics;
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
 public class Tile {
 
 	public static final int TILEWIDTH = 32, TILEHEIGHT = 32;
-
+	protected Rectangle bounds;
+	private int width, height;
 	public static Tile[] tiles = new Tile[256];
 	public static Tile grassTile = new GrassTile(0);
 	public static Tile highGrass = new HighGrassTile(1);
@@ -35,10 +37,12 @@ public class Tile {
 	protected BufferedImage texture;
 	protected final int id;
 
-	public Tile(BufferedImage texture, int id) {
+	public Tile(BufferedImage texture, int id, int width, int height) {
 		this.texture = texture;
 		this.id = id;
-
+		this.width = width;
+		this.height = height;
+		bounds = new Rectangle(0, 0, width, height);
 		tiles[id] = this;
 	}
 
@@ -58,4 +62,12 @@ public class Tile {
 		return id;
 	}
 
+	public Rectangle getBounds() {
+		return bounds;
+	}
+
+	public void setBounds(Rectangle bounds) {
+		this.bounds = bounds;
+	}
+	
 }

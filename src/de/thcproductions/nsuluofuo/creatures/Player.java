@@ -62,13 +62,14 @@ public class Player extends Creature {
 
 	@Override
 	public void update() {
-
+		
+		getInput();
+		move();
 		animDown.update();
 		animUp.update();
 		animLeft.update();
 		animRight.update();
-		getInput();
-		move();
+		
 		handler.getGameCamera().centerOnEntity(this);
 		checkAttack();
 		checkEntity();
@@ -159,13 +160,13 @@ public class Player extends Creature {
 			setyMove(getyMove() - getSpeed());
 		}
 		if (handler.getKeyManager().isDown()) {
-			setyMove(getyMove() + getSpeed());
+			setyMove(getSpeed());
 		}
 		if (handler.getKeyManager().isLeft()) {
 			setxMove(getxMove() - getSpeed());
 		}
 		if (handler.getKeyManager().isRight()) {
-			setxMove(getxMove() + getSpeed());
+			setxMove(getSpeed());
 		}
 
 		if (handler.getKeyManager().isSpace()) {

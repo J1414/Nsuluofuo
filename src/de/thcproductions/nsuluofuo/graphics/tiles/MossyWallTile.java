@@ -5,7 +5,7 @@ import de.thcproductions.nsuluofuo.graphics.Assets;
 public class MossyWallTile extends Tile{
 
 	public MossyWallTile(int id) {
-		super(Assets.mossyWall, id);
+		super(Assets.mossyWall, id,32,32);
 		
 	}
 	

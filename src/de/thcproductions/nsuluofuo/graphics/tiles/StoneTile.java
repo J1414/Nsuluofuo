@@ -5,7 +5,7 @@ import de.thcproductions.nsuluofuo.graphics.Assets;
 public class StoneTile extends Tile{
 
 	public StoneTile(int id) {
-		super(Assets.stone, id);
+		super(Assets.stone, id,32,32);
 		
 	}
 	

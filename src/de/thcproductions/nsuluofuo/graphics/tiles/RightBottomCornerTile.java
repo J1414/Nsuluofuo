@@ -5,7 +5,7 @@ import de.thcproductions.nsuluofuo.graphics.Assets;
 public class RightBottomCornerTile extends Tile{
 
 	public RightBottomCornerTile(int id) {
-		super(Assets.rightBottomCorner, id);
+		super(Assets.rightBottomCorner, id,32,32);
 		// TODO Auto-generated constructor stub
 	}
 
