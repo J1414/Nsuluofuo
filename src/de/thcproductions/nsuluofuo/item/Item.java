@@ -11,7 +11,10 @@ public class Item {
 
 	public static Item[] items = new Item[256];
 	
-
+	public static Item trivel = new Item(Assets.trivel,"Trivle", 42000000, 0, 0, 0);
+	public static Item dSword = new Item(Assets.dsword,"Sword", 100, 0, 10, 1);
+	public static Item mSword = new Item(Assets.msword,"Malsword", 100, 0, 20, 2);
+	public static Item tSword = new Item(Assets.tsword,"Trivialsword", 100, 0, 50, 3);
 	public static final int ITEMWIDTH = 32, ITEMHEIGHT = 32;
 
 	private Handler handler;

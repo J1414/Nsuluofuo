@@ -54,7 +54,9 @@ public abstract class Creature extends Entity {
 	}
 
 	private boolean collisionWithTile(int x, int y) {
-		//return handler.getWorld().getEntityManager().getPlayer().getCollisionBounds(0f, 0f).intersects(handler.getWorld().getTile(x,y).getBounds());
+		// return
+		// handler.getWorld().getEntityManager().getPlayer().getCollisionBounds(0f,
+		// 0f).intersects(handler.getWorld().getTile(x,y).getBounds());
 		return handler.getWorld().getTile(x, y).isSolid();
 	}
 
@@ -102,7 +104,7 @@ public abstract class Creature extends Entity {
 				handler.getWorld().getEntityManager().getPlayer()
 						.setMaxExp(handler.getWorld().getEntityManager().getPlayer().getMaxExp()
 								+ (handler.getWorld().getEntityManager().getPlayer().getMaxExp() / 2));
-				
+
 			}
 		}
 	}
