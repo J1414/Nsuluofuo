@@ -1,5 +1,6 @@
 package de.thcproductions.nsuluofuo.main;
 
+import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,6 +11,8 @@ import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
+import javax.swing.SwingConstants;
+import javax.swing.JSplitPane;
 
 public class Launcher {
 
@@ -61,29 +64,35 @@ public class Launcher {
 		frame.getContentPane().setLayout(null);
 		
 		JButton btnNewButton = new JButton("Play");
+		btnNewButton.setBackground(Color.LIGHT_GRAY);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				game.start();
+				frame.dispose();
 			}
 		});
 		btnNewButton.setBounds(335, 189, 89, 23);
 		frame.getContentPane().add(btnNewButton);
 		
 		JButton btnLogin = new JButton("Login");
+		btnLogin.setForeground(Color.BLACK);
 		btnLogin.setBounds(335, 122, 89, 23);
 		frame.getContentPane().add(btnLogin);
 		
+		btnLogin.setBackground(Color.LIGHT_GRAY);
+		
+		
 		textField = new JTextField();
-		textField.setBounds(335, 36, 86, 20);
+		textField.setBounds(335, 36, 89, 20);
 		frame.getContentPane().add(textField);
 		textField.setColumns(10);
 		
 		JLabel lblUsername = new JLabel("Username:");
-		lblUsername.setBounds(335, 11, 60, 14);
+		lblUsername.setBounds(335, 11, 89, 14);
 		frame.getContentPane().add(lblUsername);
 		
 		JLabel lblPassword = new JLabel("Password:");
-		lblPassword.setBounds(335, 67, 60, 14);
+		lblPassword.setBounds(335, 67, 89, 14);
 		frame.getContentPane().add(lblPassword);
 		
 		passwordField = new JPasswordField();
@@ -91,6 +100,7 @@ public class Launcher {
 		frame.getContentPane().add(passwordField);
 		
 		JLabel lblPlayer = new JLabel("> Player1 <");
+		lblPlayer.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPlayer.setBounds(335, 164, 89, 14);
 		frame.getContentPane().add(lblPlayer);
 		
@@ -99,11 +109,12 @@ public class Launcher {
 		frame.getContentPane().add(textPane);
 		
 		JLabel lblServeradress = new JLabel("Serveradress:");
-		lblServeradress.setBounds(10, 193, 68, 14);
+		lblServeradress.setBounds(10, 193, 89, 14);
 		frame.getContentPane().add(lblServeradress);
 		
 		textField_1 = new JTextField();
-		textField_1.setBounds(88, 190, 237, 21);
+		textField_1.setBackground(Color.WHITE);
+		textField_1.setBounds(109, 190, 216, 21);
 		frame.getContentPane().add(textField_1);
 		textField_1.setColumns(10);
 	}

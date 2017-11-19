@@ -16,7 +16,7 @@ public class MpConnection {
 	
 	private String host;
 	private int port;
-	
+	public static boolean online;
 	private static double[] characterPosx = {0, 0};
 	private static double[] characterPosy = {0, 0};
 	private static int[] characterDir = {0, 0};
@@ -30,10 +30,11 @@ public class MpConnection {
 			
 			host = phost;
 			port = pport;
-
+			online = true;
 			
 		}  catch (Exception e) {
 			e.printStackTrace();
+			online = false;
 		}
 	}
 	
@@ -46,11 +47,12 @@ public class MpConnection {
 			out = soc.getOutputStream();
 			
 			update2();
-			
+			online = true;
 			System.out.println("Client: Connected to server");
 			
 		}  catch (Exception e) {
 			e.printStackTrace();
+			online = false;
 		}
 		
 	}
