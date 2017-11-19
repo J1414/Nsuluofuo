@@ -18,19 +18,13 @@ public class Inventory {
 	private boolean itemScreen;
 	private boolean active = false;
 	private ArrayList<Item> inventoryItems;
-	private Date currentDate = new Date();
-	private SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
-	private String formattedDate = sdf.format(currentDate);
 	private int invListCenterY = 252;
 	private int invListSpacing = 40;
 	private int invImageX = 531, invImageY = 208;
 	private int invImageWidth = 64, invImageHeight = 64;
 	private int selectedItem = 0;
 	private Color color;
-	private Item item;
 	private Color color2;
-	private Item wood;
-	private Item stone;
 	private Item sword1;
 	private Item sword2;
 	private Item sword3;
@@ -47,11 +41,10 @@ public class Inventory {
 		inventoryItems.add(sword1);
 		inventoryItems.add(sword2);
 		inventoryItems.add(sword3);
-		
+
 		color = new Color(255, 255, 255, 200);
 		color2 = new Color(192, 192, 192, 200);
 	}
-
 
 	public void update() {
 
@@ -73,7 +66,7 @@ public class Inventory {
 		}
 
 		if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_ENTER)) {
-			if(inventoryItems.get(selectedItem).getCount() - 1 == 0){
+			if (inventoryItems.get(selectedItem).getCount() - 1 == 0) {
 				return;
 			}
 			if (selectedItem == (inventoryItems.size() - 1)) {
@@ -87,10 +80,10 @@ public class Inventory {
 
 		}
 		if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_H)) {
-			if(inventoryItems.get(selectedItem).getCount() - 1 == 0){
+			if (inventoryItems.get(selectedItem).getCount() - 1 == 0) {
 				return;
 			}
-			if(inventoryItems.get(selectedItem).getCount() - 1 == 0){
+			if (inventoryItems.get(selectedItem).getCount() - 1 == 0) {
 				return;
 			}
 			if (inventoryItems.get(selectedItem).getStrength() <= 0) {
@@ -107,14 +100,14 @@ public class Inventory {
 
 		}
 		if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_U)) {
-			if(inventoryItems.get(selectedItem).getCount() - 1 == 0){
+			if (inventoryItems.get(selectedItem).getCount() - 1 == 0) {
 				return;
 			}
 			if (inventoryItems.get(selectedItem).getAttack() <= 0) {
 
 				return;
 			}
-			
+
 			handler.getWorld().getEntityManager().getPlayer().setCurrentWeapon(inventoryItems.get(selectedItem));
 			handler.getWorld().getEntityManager().getPlayer().setStrength(inventoryItems.get(selectedItem).getAttack());
 		}
@@ -134,7 +127,7 @@ public class Inventory {
 		}
 
 		g.setColor(color);
-		g.fillRoundRect(20, 20, 600, 440,40,40);
+		g.fillRoundRect(20, 20, 600, 440, 40, 40);
 		g.setColor(Color.GRAY);
 		g.fillRect(40, 80, handler.getGame().getWidth() - 80, 2);
 		Text.drawString(g, "Items", 320, 60, true, Color.gray, Assets.text);
@@ -145,7 +138,17 @@ public class Inventory {
 		g.setColor(Color.LIGHT_GRAY);
 		g.fillRect(40, 220, 492, 40);
 
-		
+		g.setColor(Color.BLACK);
+		g.fillRect(304, 466, 8, 8);
+		g.fillRect(316, 466, 8, 8);
+		g.fillRect(328, 466, 8, 8);
+
+		g.setColor(Color.WHITE);
+		g.fillRect(305, 467, 6, 6);
+		g.setColor(Color.WHITE);
+		g.fillRect(317, 467, 6, 6);
+		g.setColor(Color.BLUE);
+		g.fillRect(329, 467, 6, 6);
 
 		for (int i = -5; i < 6; i++) {
 			if (selectedItem + i < 0 || selectedItem + i >= length) {
@@ -160,7 +163,7 @@ public class Inventory {
 						invListCenterY + i * invListSpacing, false, Color.GRAY, Assets.smallText);
 			}
 		}
-		
+
 		Item item = inventoryItems.get(selectedItem);
 		g.setColor(Color.LIGHT_GRAY);
 		g.fillRect(526, 203, invImageWidth + 10, invImageHeight + 10);
@@ -211,10 +214,5 @@ public class Inventory {
 	public void setItemScreen(boolean itemScreen) {
 		this.itemScreen = itemScreen;
 	}
-
-	// this.wood = wood;
-	// this.item2 = item2;
-	// this.item3 = item3;
-	// this.item4 = item4;
 
 }
