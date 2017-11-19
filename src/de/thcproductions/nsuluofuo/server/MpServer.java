@@ -9,6 +9,7 @@ public class MpServer {
 	private int port;
 	private boolean on;
 	private int clntCount = 0;
+	public static boolean online = true;
 	
 	public MpServer(int pport){
 		port = pport;
@@ -36,9 +37,11 @@ public class MpServer {
 							tr.start();
 							
 							System.out.println("Server: Client connected");
+							online = true;
 							
 						} catch (Exception e) {
 							e.printStackTrace();
+							online = false;
 						}
 					}
 				}
