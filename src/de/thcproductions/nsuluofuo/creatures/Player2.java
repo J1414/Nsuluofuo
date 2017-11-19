@@ -7,7 +7,9 @@ import java.awt.image.BufferedImage;
 import de.thcproductions.nsuluofuo.graphics.Animation;
 import de.thcproductions.nsuluofuo.graphics.Assets;
 import de.thcproductions.nsuluofuo.main.Handler;
+import de.thcproductions.nsuluofuo.multiplayer.MpConnection;
 import de.thcproductions.nsuluofuo.multiplayer.SimpleDualPlayer;
+import de.thcproductions.nsuluofuo.server.MpServer;
 
 public class Player2 extends Creature {
 	private BufferedImage currentPosition = Assets.playerDown;
@@ -87,8 +89,13 @@ public class Player2 extends Creature {
 
 	@Override
 	public void render(Graphics g) {
-		g.drawImage(getCurrentAnimationFrame(), (int) (getX() - handler.getGameCamera().getxOffset()),
-				(int) (getY() - handler.getGameCamera().getyOffset()), getWidth(), getHeight(), null);
+		if(MpConnection.online){
+			g.drawImage(getCurrentAnimationFrame(), (int) (getX() - handler.getGameCamera().getxOffset()),
+					(int) (getY() - handler.getGameCamera().getyOffset()), getWidth(), getHeight(), null);
+		}else{
+			return;
+		}
+		
 
 	}
 

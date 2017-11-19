@@ -75,7 +75,7 @@ public class Game implements Runnable {
 		Mode.setMode(menuMode);
 		
 		//Server beitreten
-		SimpleDualPlayer.join("nsuluofuo.schwarzf.de", 1442);
+		SimpleDualPlayer.join(Launcher.adress, 1442);
 	}
 
 	private void update() {
